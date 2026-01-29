@@ -79,7 +79,7 @@ const Navbar1 = ({
     },
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
     },
     
   ],
