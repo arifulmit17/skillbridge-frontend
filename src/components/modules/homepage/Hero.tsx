@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Card, CardContent } from "../ui/card"
+import { Card, CardContent } from "../../ui/card"
 
 export function Hero() {
   return (

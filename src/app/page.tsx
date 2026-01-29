@@ -1,8 +1,12 @@
-import { Hero } from "@/components/sections/Hero";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Hero } from "@/components/modules/homepage/Hero";
 
-export default function Home() {
+
+
+
+
+export default async function Home() {
+  
+ 
   return (
     <div className="min-h-screen">
       <section className="border border-black">

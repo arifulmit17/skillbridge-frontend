@@ -81,14 +81,11 @@ const Navbar1 = ({
       title: "Dashboard",
       url: "#",
     },
-    {
-      title: "Blog",
-      url: "#",
-    },
+    
   ],
   auth = {
-    login: { title: "Login", url: "#" },
-    signup: { title: "Sign up", url: "#" },
+    login: { title: "Login", url: "/login" },
+    signup: { title: "Sign up", url: "/signup" },
   },
   className,
 }: Navbar1Props) => {
