@@ -7,6 +7,10 @@ export const tutorRoutes: Route[] = [
     title: "Session Management",
     items: [
       {
+        title: "Home",
+        url: "/",
+      },
+      {
         title: "Arrange Sessions",
         url: "/sessions",
       },
