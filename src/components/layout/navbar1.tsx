@@ -74,7 +74,7 @@ const Navbar1 = ({
     },
     {
       title: "Sessions",
-      url: "#",
+      url: "/sessions",
      
     },
     {
