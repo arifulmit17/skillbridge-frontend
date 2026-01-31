@@ -5,6 +5,7 @@ const API_URL=env.API_URL
 interface GetTutorParams {
   isFeatured?: boolean;
   search?: string;
+  userId?: string;
 }
 export const tutorService={
     getTutor: async function(params?: GetTutorParams){
@@ -48,6 +49,25 @@ getTutorById : async function(id:string){
     catch(err){
         console.log(err);
         return {data:null,error:{message:"Failed to fetch tutor by ID"}}
+    }
+},
+getTutorByUserId : async function(params?: GetTutorParams){
+    try{
+        console.log(params?.userId);
+        const url= new URL(`${API_URL}/tutors/user/`);
+        
+        if (params?.userId) {
+            url.searchParams.append('id', params.userId);
+          }
+        //   console.log(url);
+         const res=await fetch(url.toString())
+         const data=await res.json()
+//  console.log("Home page session:",session);
+ return {data:data,error:null}
+    }
+    catch(err){
+        console.log(err);
+        return {data:null,error:{message:"Failed to fetch tutor by user ID"}}
     }
 }
 }
