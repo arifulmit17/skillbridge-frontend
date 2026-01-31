@@ -1,64 +1,74 @@
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Star } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 type Tutor = {
   id: string
   subject: string
   price: string
   isFeatured: boolean
-  status: string
-  reviews: { rating: string }[]
-  category: { name: string }
+  status: "ACTIVE" | "INACTIVE"
+  user: {
+    name: string
+    email: string
+    image: string
+  }
+  category: {
+    name: string
+  }
+  reviews: {
+    rating: number
+    comment: string
+  }[]
 }
 
-export function TutorCard({ tutor }: { tutor: Tutor }) {
-  
-
+export default function TutorCard({ tutor }: { tutor: Tutor }) {
   return (
-    <Card className="hover:shadow-lg transition">
-      <CardContent className="p-5 space-y-4">
-        {/* Header */}
-        <div className="flex items-start justify-between">
-          <div>
-            <h3 className="text-lg font-semibold">{tutor.subject}</h3>
-            <p className="text-sm text-muted-foreground">
-              {tutor.category.name}
-            </p>
-          </div>
+    <div className="rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        
 
-          {tutor.isFeatured && (
-            <Badge variant="secondary">Featured</Badge>
-          )}
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold capitalize">
+            {tutor.user?.name}
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            {tutor.subject} · {tutor.category.name}
+          </p>
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1 text-sm">
-          <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-          
-          <span className="text-muted-foreground">
-            ({tutor.reviews.length} reviews)
+        {tutor.isFeatured && (
+          <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700">
+            ⭐ Featured
           </span>
-        </div>
-
-        {/* Price */}
-        <div className="text-xl font-bold">
-          ${tutor.price}
-          <span className="text-sm font-normal text-muted-foreground">
-            {" "} / hour
-          </span>
-        </div>
-
-        {/* Status */}
-        {tutor.status !== "ACTIVE" && (
-          <Badge variant="destructive">Unavailable</Badge>
         )}
-      </CardContent>
+      </div>
 
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full">View Profile</Button>
-      </CardFooter>
-    </Card>
+      {/* Body */}
+      <div className="mt-4 flex items-center justify-between">
+        <div>
+          <p className="text-sm text-muted-foreground">Hourly Rate</p>
+          <p className="text-xl font-bold">${tutor.price}</p>
+        </div>
+
+        <span
+          className={`rounded-full px-3 py-1 text-xs font-medium ${
+            tutor.status === "ACTIVE"
+              ? "bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500"
+          }`}
+        >
+          {tutor.status}
+        </span>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
+        <span>{tutor.reviews.length} reviews</span>
+        <Link href={`/tutors/${tutor.id}`} className="rounded-lg bg-primary px-4 py-2 text-white hover:bg-primary/90 transition">
+          View Profile
+        </Link>
+      </div>
+    </div>
   )
 }

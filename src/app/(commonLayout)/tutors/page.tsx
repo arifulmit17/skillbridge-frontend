@@ -1,4 +1,5 @@
-import { TutorCard } from '@/components/modules/homepage/TutorCard';
+
+import TutorCard from '@/components/modules/homepage/TutorCard';
 import { tutorService } from '@/services/tutor.service';
 import React from 'react'
 

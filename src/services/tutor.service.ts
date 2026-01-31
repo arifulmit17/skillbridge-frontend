@@ -10,7 +10,7 @@ export const tutorService={
     getTutor: async function(params?: GetTutorParams){
         try{
              const url = new URL(`${API_URL}/tutors`);
-             console.log(url);
+             
 
       if (params) {
         Object.entries(params).forEach(([key, value]) => {
@@ -36,5 +36,19 @@ export const tutorService={
         console.log(err);
         return {data:null,error:{message:"Failed to fetch tutor data"}}
     }
+},
+
+getTutorById : async function(id:string){
+    try{
+         const res=await fetch(`${API_URL}/tutors/${id}`)
+         const data=await res.json()
+//  console.log("Home page session:",session);
+ return {data:data,error:null}
+    }
+    catch(err){
+        console.log(err);
+        return {data:null,error:{message:"Failed to fetch tutor by ID"}}
+    }
 }
 }
+
