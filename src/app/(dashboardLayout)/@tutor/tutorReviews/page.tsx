@@ -8,7 +8,7 @@ import React from 'react'
 export default async function TutorReviewsPage() {
     const {data:user}=await userService.getSession()
     const tutor=await tutorService.getTutorByUserId({userId:user.session.userId})
-    console.log("the tutor is",tutor.data.id);
+    
     const reviews=await reviewsService.getAllReviews()
     const data=await reviews.data.json();
     const filteredReviews=data.filter((review:any)=>review.tutorId===tutor.data.id)
