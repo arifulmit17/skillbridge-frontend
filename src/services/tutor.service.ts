@@ -54,7 +54,7 @@ getTutorById : async function(id:string){
 },
 getTutorByUserId : async function(params?: GetTutorParams){
     try{
-        console.log(params?.userId);
+        // console.log(params?.userId);
         const url= new URL(`${API_URL}/tutors/user/`);
         
         if (params?.userId) {
