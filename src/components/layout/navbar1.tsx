@@ -27,6 +27,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 interface MenuItem {
   title: string;
@@ -39,8 +40,7 @@ interface MenuItem {
 interface Navbar1Props {
   className?: string;
   logo?: {
-    url: string;
-    src: string;
+    
     alt: string;
     title: string;
     className?: string;
@@ -58,12 +58,23 @@ interface Navbar1Props {
   };
 }
 
+const handleLogout = async () => {
+  await authClient.signOut({
+  fetchOptions: {
+    onSuccess: () => {
+      window.location.href = "/login";
+    },
+  },
+});
+  
+}
+
 const Navbar1 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
+    
+    
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "SkillBridge",
   },
   menu = [
     { title: "Home", url: "/" },
@@ -89,6 +100,8 @@ const Navbar1 = ({
   },
   className,
 }: Navbar1Props) => {
+
+  const {session}= authClient.getSession()
   return (
     <section className={cn("py-4", className)}>
       <div className="container mx-auto px-4">
@@ -96,16 +109,12 @@ const Navbar1 = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
+            
+              
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
-            </a>
+            
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -115,9 +124,12 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
+           {session ? <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
-            </Button>
+            </Button>:
+            <Button asChild variant="outline" size="sm">
+              <div onClick={handleLogout}>Logout</div>
+            </Button>}
             <Button asChild size="sm">
               <a href={auth.signup.url}>{auth.signup.title}</a>
             </Button>
