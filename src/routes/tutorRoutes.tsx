@@ -19,7 +19,7 @@ export const tutorRoutes: Route[] = [
         url: "/sessions",
       },
       {
-        title: "Tutor Reviews",
+        title: "Student's Reviews",
         url: "/tutorReviews",
       },
     ],

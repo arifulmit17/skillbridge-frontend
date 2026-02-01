@@ -49,7 +49,14 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
     console.log("Signup payload:", payload)
     try {
       const { data, error } = await authClient.signUp.email(payload)
-      console.log(data);
+      if(data){
+        window.location.href="/"
+      }
+      if (error) {
+        console.error("Signup error:", error)
+        return
+      }
+      
     }catch (error) {
       console.error("Signup error:", error)
     }

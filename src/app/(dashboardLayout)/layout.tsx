@@ -1,5 +1,6 @@
 
 import { AppSidebar } from "@/components/app-sidebar";
+import LogoutButton from "@/components/modules/shared/LogoutButton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,12 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { authClient } from "@/lib/auth-client";
 import { userService } from "@/services/user.service";
 
 export default async function DashboardLayout({
@@ -29,6 +32,8 @@ export default async function DashboardLayout({
   const userInfo = {
     role: data?.user.role,
   };
+  
+
 
   return (
     <SidebarProvider>
@@ -44,15 +49,19 @@ export default async function DashboardLayout({
             <BreadcrumbList>
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href="#">
-                  Building Your Application
+                  Dashboard
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                <BreadcrumbPage>{userInfo.role}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+          <div className="w-full flex justify-end">
+            <LogoutButton></LogoutButton>
+          </div>
+          
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {userInfo.role === "admin" ? admin : userInfo.role === "tutor" ? tutor : student}

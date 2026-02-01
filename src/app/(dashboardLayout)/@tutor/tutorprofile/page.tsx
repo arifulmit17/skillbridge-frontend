@@ -1,27 +1,25 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import ProfilepageTutor from '@/components/modules/pages/ProfilepageTutor';
+
+import { ProfilepageTutor } from '@/components/modules/pages/ProfilepageTutor';
+import TutorProfile from '@/components/modules/pages/TutorProfile';
+
 import { categoriesService } from '@/services/categories.service';
+import { tutorService } from '@/services/tutor.service';
 import { userService } from '@/services/user.service'
 import React from 'react'
 
-export default async function profile() {
+export default   async function profile() {
     const {data:user}=await userService.getSession()
     const  myId=user.session.userId;
+    const {data:tutor}=await tutorService.getTutorByUserId({userId:myId!});
+    
     const {data:category}=await categoriesService.getAllCategories();
     const categoryList=await category.json();
     console.log(categoryList);
   return (
-    <div>profile page
-        <Select>
-  <SelectTrigger className="w-50">
-    <SelectValue placeholder="Category" />
-  </SelectTrigger>
-  <SelectContent>
-    {categoryList.map((cat: any) => (
-    <SelectItem key={cat.id} value={cat.id}>{cat.name}</SelectItem>
-    ))}
-  </SelectContent>
-</Select>
+    <div>
+         {tutor ? <TutorProfile tutor={tutor}></TutorProfile>:
+        <ProfilepageTutor userId={myId} categories={categoryList}></ProfilepageTutor>}
+        
         
     </div>
   )

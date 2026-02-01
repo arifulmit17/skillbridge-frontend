@@ -8,6 +8,7 @@ interface GetTutorParams {
   userId?: string;
 }
 export const tutorService={
+    
     getTutor: async function(params?: GetTutorParams){
         try{
              const url = new URL(`${API_URL}/tutors`);
