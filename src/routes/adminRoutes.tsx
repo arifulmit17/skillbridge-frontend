@@ -11,8 +11,8 @@ export const adminRoutes: Route[] = [
         url: "/",
       },
       {
-        title: "Analytics",
-        url: "/analytics",
+        title: "All Sessions",
+        url: "/allSession",
       },
     ],
   },

@@ -4,9 +4,10 @@ import {
   CardTitle,
   CardContent,
 } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import DeleteButton from "../shared/DeleteButton"
 import CompleteButton from "../shared/CompleteButton"
+import { userService } from "@/services/user.service"
+
 
 type Session = {
   id: string
@@ -21,9 +22,14 @@ type Session = {
 
 
 
-export function SessionCard({ session }: { session: Session }) {
+export async function  SessionCard({ session }: { session: Session }) {
   const start = new Date(session.startTime)
   const end = new Date(session.endTime)
+ 
+      const { data } = await userService.getSession();
+  
+    const role= data?.user.role
+    console.log(role);
 
   const durationHours =
     (end.getTime() - start.getTime()) / (1000 * 60 * 60)
@@ -63,9 +69,11 @@ export function SessionCard({ session }: { session: Session }) {
         </div>
 
         <div className="flex gap-2 pt-3">
+            {role=="admin" && <DeleteButton sessionId={session.id}></DeleteButton>}
           {session.status === "PENDING" && (
             <>
               <DeleteButton sessionId={session.id}></DeleteButton>
+              
               <CompleteButton sessionId={session.id}></CompleteButton>
             </>
           )}
