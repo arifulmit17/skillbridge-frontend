@@ -129,7 +129,7 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
               >
                 <option value="student">Student</option>
                 <option value="tutor">Tutor</option>
-                <option value="admin">Admin</option>
+                
               </select>
             </Field>
 

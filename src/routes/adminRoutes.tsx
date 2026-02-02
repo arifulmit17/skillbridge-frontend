@@ -14,6 +14,14 @@ export const adminRoutes: Route[] = [
         title: "All Sessions",
         url: "/allSession",
       },
+      {
+        title: "All Tutors",
+        url: "/allTutor",
+      },
+      {
+        title: "All Users",
+        url: "/allUser",
+      },
     ],
   },
   

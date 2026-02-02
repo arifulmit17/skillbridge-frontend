@@ -1,6 +1,7 @@
 import { env } from "@/env";
 import { cookies } from "next/headers";
 const AUTH_URL=env.AUTH_URL
+
 export const userService={
     getSession: async function(){
         try{
@@ -20,5 +21,9 @@ export const userService={
         console.log(err);
         return {data:null,error:{message:"Failed to fetch session"}}
     }
-}
+},
+
+
+
+
 }
