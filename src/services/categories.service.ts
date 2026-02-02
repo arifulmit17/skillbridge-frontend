@@ -11,5 +11,7 @@ export const categoriesService = {
             cache:'no-store'
         })
        return {data:data,error:null}
-    }
+    },
+
+   
 }
