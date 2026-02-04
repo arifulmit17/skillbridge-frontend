@@ -7,6 +7,9 @@ import {
 import DeleteButton from "../shared/DeleteButton"
 import CompleteButton from "../shared/CompleteButton"
 import { userService } from "@/services/user.service"
+import BookingButton from "../shared/BookingButton"
+import { bookingService } from "@/services/booking.service"
+import { tutorService } from "@/services/tutor.service"
 
 
 type Session = {
@@ -23,14 +26,26 @@ type Session = {
 
 
 export async function  SessionCard({ session }: { session: Session }) {
+  
+  const tutorId=session.tutor.userId
+ 
+   const tutorData=await tutorService.getTutorByUserId(tutorId)
+   const tutorName=tutorData.data.user.name
+   
   const start = new Date(session.startTime)
   const end = new Date(session.endTime)
- 
+  const sessionID=session.studentId
       const { data } = await userService.getSession();
-  
-    const role= data?.user.role
-    console.log(role);
-
+       
+    const role= data?.user?.role
+    const userId=data?.user?.id
+    const userName=data?.user?.name
+    let booked=false
+    // const {data:teachingSession}=await bookingService.getAllSessions()
+    //  const teaching=await teachingSession.json()
+    if(userId==sessionID){
+       booked=true
+    }
   const durationHours =
     (end.getTime() - start.getTime()) / (1000 * 60 * 60)
 
@@ -43,7 +58,7 @@ export async function  SessionCard({ session }: { session: Session }) {
   return (
     <Card className="max-w-md">
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-lg">Tutoring Session</CardTitle>
+        <CardTitle className="text-lg">Tutoring Session by {tutorName}</CardTitle>
 
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${statusColor}`}
@@ -57,7 +72,7 @@ export async function  SessionCard({ session }: { session: Session }) {
           <p className="text-muted-foreground">Start</p>
           <p>{start.toLocaleString()}</p>
         </div>
-
+        
         <div>
           <p className="text-muted-foreground">End</p>
           <p>{end.toLocaleString()}</p>
@@ -67,12 +82,13 @@ export async function  SessionCard({ session }: { session: Session }) {
           <p className="text-muted-foreground">Duration</p>
           <p>{durationHours.toFixed(1)} hours</p>
         </div>
-
+         {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
         <div className="flex gap-2 pt-3">
             {role=="admin" && <DeleteButton sessionId={session.id}></DeleteButton>}
           {session.status === "PENDING" && (
             <>
               <DeleteButton sessionId={session.id}></DeleteButton>
+             {!booked && <BookingButton studentId={data.user.id} sessionId={session.id}></BookingButton>} 
               
               <CompleteButton sessionId={session.id}></CompleteButton>
             </>

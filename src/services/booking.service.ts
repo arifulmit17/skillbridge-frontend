@@ -30,6 +30,7 @@ export const bookingService={
 
 
 updateSession: async function (sessionId:string,data:UpdateSessionData ) {
+    console.log("student id: ",data,"session id:",sessionId);
     const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${sessionId}`,
     {
@@ -40,11 +41,12 @@ updateSession: async function (sessionId:string,data:UpdateSessionData ) {
       body: JSON.stringify(data),
     }
   )
-
+  
   if (!res.ok) {
     const error = await res.json().catch(() => null)
     throw new Error(error?.message || "Failed to update session")
   }
+  
 
   return res.json()
 }
