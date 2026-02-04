@@ -10,6 +10,7 @@ import { userService } from "@/services/user.service"
 import BookingButton from "../shared/BookingButton"
 import { bookingService } from "@/services/booking.service"
 import { tutorService } from "@/services/tutor.service"
+import ReviewInput from "../shared/ReviewInput"
 
 
 type Session = {
@@ -28,6 +29,8 @@ type Session = {
 export async function  SessionCard({ session }: { session: Session }) {
   
   const tutorId=session.tutor.userId
+  const SessionStatus=session.status
+  
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
    const tutorName=tutorData.data.user.name
@@ -93,6 +96,10 @@ export async function  SessionCard({ session }: { session: Session }) {
               <CompleteButton sessionId={session.id}></CompleteButton>
             </>
           )}
+          {session.status==="COMPLETED" && <div>
+            <h1>Give your review</h1>
+            <ReviewInput tutorId={session.tutorId} userId={data.user.id}></ReviewInput>
+            </div>} 
         </div>
       </CardContent>
     </Card>
