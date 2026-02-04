@@ -52,16 +52,17 @@ getTutorById : async function(id:string){
         return {data:null,error:{message:"Failed to fetch tutor by ID"}}
     }
 },
-getTutorByUserId : async function(params?: GetTutorParams){
+getTutorByUserId : async function(id:string){
     try{
-        // console.log(params?.userId);
-        const url= new URL(`${API_URL}/tutors/user/`);
         
-        if (params?.userId) {
-            url.searchParams.append('id', params.userId);
-          }
-        //   console.log(url);
+        const url= new URL(`${API_URL}/tutors/user/?id=${id}`);
+        
          const res=await fetch(url.toString())
+         if (!res.ok) {
+  const text = await res.text()
+  console.error("Non-JSON response:", text)
+  throw new Error(`Request failed with status ${res.status}`)
+}
          const data=await res.json()
 //  console.log("Home page session:",session);
  return {data:data,error:null}

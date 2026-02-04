@@ -12,7 +12,7 @@ export const studentRoutes: Route[] = [
       },
       {
         title: "Booked Sessions",
-        url: "/sessions",
+        url: "/myBookings",
       },
     ],
   },

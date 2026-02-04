@@ -1,4 +1,4 @@
-import { CategoryCard } from '@/components/modules/pages/CategoryCard';
+import { CategoryCard } from '@/components/modules/Cards/CategoryCard';
 import CategoryCreatePage from '@/components/modules/pages/CategoryCreatePage';
 import { categoriesService } from '@/services/categories.service'
 

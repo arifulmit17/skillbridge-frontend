@@ -1,6 +1,6 @@
 import { tutorService } from '@/services/tutor.service'
 import React from 'react'
-import TutorCard from './TutorCard';
+import TutorCard from '../Cards/TutorCard';
 
 
 export default async function FeaturedTutor() {

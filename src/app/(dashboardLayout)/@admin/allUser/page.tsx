@@ -1,4 +1,4 @@
-import { UserCard } from '@/components/modules/pages/UserCard';
+import { UserCard } from '@/components/modules/Cards/UserCard';
 import { userService2 } from '@/services/user2.service';
 
 export default async function AllUser() {

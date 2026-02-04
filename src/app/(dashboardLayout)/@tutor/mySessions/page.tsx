@@ -1,4 +1,4 @@
-import { SessionCard } from '@/components/modules/pages/SessionCard';
+import { SessionCard } from '@/components/modules/Cards/SessionCard';
 import { bookingService } from '@/services/booking.service';
 import { tutorService } from '@/services/tutor.service';
 import { userService } from '@/services/user.service';

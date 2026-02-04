@@ -1,4 +1,7 @@
-import Image from "next/image"
+import Link from "next/link"
+
+
+
 
 type TutorProfile = {
   id: string
@@ -67,11 +70,13 @@ function Badge({
 }
 
 
-export default function TutorProfilePage({
+export default async function TutorProfilePage({
   tutor,
 }: {
   tutor: TutorProfile
 }) {
+    
+       
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Hero Section */}
@@ -102,10 +107,10 @@ export default function TutorProfilePage({
                 )}
               </div>
             </div>
-
-            <button className="rounded-xl bg-primary px-6 py-3 text-white font-medium hover:bg-primary/90 transition">
+             
+            <Link href={'/sessions'} className="rounded-xl bg-primary px-6 py-3 text-white font-medium hover:bg-primary/90 transition">
               Book a Session
-            </button>
+            </Link>
           </div>
         </div>
       </section>
