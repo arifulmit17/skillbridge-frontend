@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
-import { async } from './../../../proxy';
+import { async } from '../../../../proxy';
 
 export  function SignupForm(props: React.ComponentProps<typeof Card>) {
   const [formData, setFormData] = useState({

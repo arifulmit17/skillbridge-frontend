@@ -28,7 +28,7 @@ export default function CategoryUpdatePage() {
 
         const data = await res.json()
         setName(data.name)
-      } catch (err: any) {
+      } catch (err:any) {
         setError(err.message)
       } finally {
         setInitialLoading(false)

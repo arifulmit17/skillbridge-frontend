@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { Logo, LogoImage, LogoText } from "@/components/logo";
+
 
 interface MenuItem {
   title: string;
@@ -28,26 +28,10 @@ interface Footer2Props {
 }
 
 const Footer2 = ({
-  logo = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-    alt: "blocks for shadcn/ui",
-    title: "Shadcnblocks.com",
-    url: "https://www.shadcnblocks.com",
-  },
+  
   className,
   tagline = "Components made easy.",
   menuItems = [
-    {
-      title: "Product",
-      links: [
-        { text: "Overview", url: "#" },
-        { text: "Pricing", url: "#" },
-        { text: "Marketplace", url: "#" },
-        { text: "Features", url: "#" },
-        { text: "Integrations", url: "#" },
-        { text: "Pricing", url: "#" },
-      ],
-    },
     {
       title: "Company",
       links: [
@@ -89,17 +73,9 @@ const Footer2 = ({
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex items-center gap-2 lg:justify-start">
-                <Logo url="https://shadcnblocks.com">
-                  <LogoImage
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    className="h-10 dark:invert"
-                  />
-                  <LogoText className="text-xl">{logo.title}</LogoText>
-                </Logo>
+                <h1>Skill bridge</h1>
               </div>
-              <p className="mt-4 font-bold">{tagline}</p>
+              
             </div>
             {menuItems.map((section, sectionIdx) => (
               <div key={sectionIdx}>

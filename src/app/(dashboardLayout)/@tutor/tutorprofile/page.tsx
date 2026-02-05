@@ -10,7 +10,7 @@ import React from 'react'
 export default   async function profile() {
     const {data:user}=await userService.getSession()
     const  myId=user.session.userId;
-    const {data:tutor}=await tutorService.getTutorByUserId({userId:myId!});
+    const {data:tutor}=await tutorService.getTutorByUserId(myId);
     
     const {data:category}=await categoriesService.getAllCategories();
     const categoryList=await category.json();

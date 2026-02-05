@@ -2,6 +2,15 @@ import { CategoryCard } from '@/components/modules/Cards/CategoryCard';
 import CategoryCreatePage from '@/components/modules/pages/CategoryCreatePage';
 import { categoriesService } from '@/services/categories.service'
 
+type   category= {
+    id: string
+    name: string
+    _count: {
+      tutors: number
+      bookings: number
+    
+  }
+}
 
 export default async function Categorypage() {
     const {data}=await categoriesService.getAllCategories()
@@ -12,7 +21,7 @@ export default async function Categorypage() {
     <h2 className="text-lg font-semibold">Categories</h2>
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-      {categoryList.map((category) => (
+      {categoryList.map((category:category) => (
         <CategoryCard key={category.id} category={category}></CategoryCard>
       ))}
     </div>

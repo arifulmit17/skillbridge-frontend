@@ -8,7 +8,7 @@ import DeleteButton from "../shared/DeleteButton"
 import CompleteButton from "../shared/CompleteButton"
 import { userService } from "@/services/user.service"
 import BookingButton from "../shared/BookingButton"
-
+import { bookingService } from "@/services/booking.service"
 import { tutorService } from "@/services/tutor.service"
 import ReviewInput from "../shared/ReviewInput"
 
@@ -26,7 +26,7 @@ type Session = {
 
 
 
-export async function  SessionCard({ session }: { session: Session }) {
+export async function  SessionCard2({ session }: { session: Session }) {
   
   const tutorId=session.tutor.userId
   const SessionStatus=session.status
@@ -86,21 +86,7 @@ export async function  SessionCard({ session }: { session: Session }) {
           <p>{durationHours.toFixed(1)} hours</p>
         </div>
          {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
-        <div className="flex gap-2 pt-3">
-            {role=="admin" && <DeleteButton sessionId={session.id}></DeleteButton>}
-          {session.status === "PENDING" && (
-            <>
-              <DeleteButton sessionId={session.id}></DeleteButton>
-             {!booked && <BookingButton studentId={data.user.id} sessionId={session.id}></BookingButton>} 
-              
-              <CompleteButton sessionId={session.id}></CompleteButton>
-            </>
-          )}
-          {session.status==="COMPLETED" && <div>
-            <h1>Give your review</h1>
-            <ReviewInput tutorId={session.tutorId} userId={data.user.id}></ReviewInput>
-            </div>} 
-        </div>
+        
       </CardContent>
     </Card>
   )
