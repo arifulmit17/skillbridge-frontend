@@ -42,7 +42,7 @@ export default function CategoryCreatePage() {
       setName("")
       toast.success("Category created successfully")
      
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message)
     } finally {
       setLoading(false)

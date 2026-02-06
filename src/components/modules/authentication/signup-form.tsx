@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
-import { async } from '../../../../proxy';
+import { toast } from "sonner"
 
 export  function SignupForm(props: React.ComponentProps<typeof Card>) {
   const [formData, setFormData] = useState({
@@ -50,6 +50,7 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
     try {
       const { data, error } = await authClient.signUp.email(payload)
       if(data){
+        toast.success("Signup successful")
         window.location.href="/"
       }
       if (error) {
@@ -59,9 +60,8 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
       
     }catch (error) {
       console.error("Signup error:", error)
+      toast.error("Signup not successful, Please try again.")
     }
-    
-    // send payload to your auth / signup API
   }
 
   return (

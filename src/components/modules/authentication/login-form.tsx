@@ -18,6 +18,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { toast } from "sonner"
 
 export function LoginForm({
   className,
@@ -33,15 +34,19 @@ export function LoginForm({
     setLoading(true)
     setError(null)
 
-    const { error } = await authClient.signIn.email({
+    const { error,data } = await authClient.signIn.email({
       email,
       password,
     })
+    if(data){
+      toast.success("Login successful")
+    }
 
     setLoading(false)
 
     if (error) {
       setError(error.message)
+      toast.error("Login not successful, Please try again.")
       return
     }
 
