@@ -42,6 +42,7 @@ export const tutorService={
 
 getTutorById : async function(id:string){
     try{
+        
          const res=await fetch(`${API_URL}/tutors/${id}`)
          const data=await res.json()
 //  console.log("Home page session:",session);
@@ -58,12 +59,14 @@ getTutorByUserId : async function(id:string){
         const url= new URL(`${API_URL}/tutors/user/?id=${id}`);
         
          const res=await fetch(url.toString())
+        
          if (!res.ok) {
   const text = await res.text()
   console.error("Non-JSON response:", text)
   throw new Error(`Request failed with status ${res.status}`)
 }
          const data=await res.json()
+        
 //  console.log("Home page session:",session);
  return {data:data,error:null}
     }

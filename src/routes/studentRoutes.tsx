@@ -14,6 +14,10 @@ export const studentRoutes: Route[] = [
         title: "My Booked Sessions",
         url: "/myBookings",
       },
+      {
+        title: "My Reviews",
+        url: "/myReviews",
+      },
     ],
   },
 ];

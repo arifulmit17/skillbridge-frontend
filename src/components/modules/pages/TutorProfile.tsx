@@ -9,7 +9,7 @@ type TutorProfile = {
   price: string
   isFeatured: boolean
   status: "ACTIVE" | "INACTIVE"
-  createdAt: string
+  createdAt?: string
   user: {
     name: string
     email: string

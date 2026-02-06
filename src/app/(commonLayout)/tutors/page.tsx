@@ -1,6 +1,8 @@
 "use client"
 import TutorCard from '@/components/modules/Cards/TutorCard';
+import GetAllTutor from '@/components/modules/shared/GetAllTutor';
 import SearchFormCustom from '@/components/modules/shared/SearchFormCustom';
+import { tutorService } from '@/services/tutor.service';
 
 
 import React, { useState } from 'react'
@@ -27,6 +29,7 @@ type Tutor = {
 export default function TutorPage() {
   
   const [tutors, setTutors] = useState<Tutor[]>([])
+  
   console.log(tutors);
   return (
     
@@ -36,7 +39,9 @@ export default function TutorPage() {
              <SearchFormCustom onResults={setTutors}></SearchFormCustom>
           </div>
           <div className='w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5'>
-            {tutors.map((tutor:Tutor)=><TutorCard key={tutor.id} tutor={tutor}></TutorCard>)}
+            {tutors.map((tutor:Tutor)=><TutorCard key={tutor.id} tutor={tutor}></TutorCard> )} 
+              
+              
         </div>
 
          </div>

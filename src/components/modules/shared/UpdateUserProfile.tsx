@@ -30,11 +30,14 @@ export default function UpdateUserProfile({ userId }: { userId: string }) {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    const payload: UpdateUserData = {
-      name,
-      emailVerified,
-      
-    }
+    const payload: UpdateUserData = {}
+
+if (name.trim()) {
+  payload.name = name
+}
+
+payload.emailVerified = emailVerified
+
 
     await handleUpdate(userId, payload)
   }

@@ -1,3 +1,4 @@
+import FaqSection from "@/components/modules/homepage/FAQSection";
 import FeaturedTutor from "@/components/modules/homepage/FeaturedTutor";
 import { Hero } from "@/components/modules/homepage/Hero";
 import PopularSessions from "@/components/modules/pages/PopularSessions";
@@ -32,7 +33,7 @@ export default async function Home() {
             
            <PopularSessions></PopularSessions>
       </section>
-      {/* <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
+      <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
             <div className="w-full text-5xl text-center"> 
                <h1 >Popular Categories</h1>
             </div>
@@ -44,8 +45,8 @@ export default async function Home() {
                <h1 >F.A.Q</h1>
             </div>
             
-           <FeaturedTutor></FeaturedTutor>
-      </section> */}
+          <FaqSection></FaqSection>
+      </section>
      
     </div>
   );
