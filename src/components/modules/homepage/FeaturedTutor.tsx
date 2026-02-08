@@ -27,7 +27,7 @@ export default async function FeaturedTutor() {
     },)
   
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+    <div className='w-11/12 grid grid-cols-1 lg:grid-cols-3 gap-5'>
         {data?.data?.map((tutor:Tutor)=><TutorCard key={tutor.id} tutor={tutor}></TutorCard>)}
     </div>
   )

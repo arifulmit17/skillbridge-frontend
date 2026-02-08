@@ -4,13 +4,17 @@ const API_URL=env.API_URL
 export const userService2={
 
 updateUser: async function (userId:string,data:UpdateUserData ) {
+     
     const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`,
     {
       method: "PATCH", // or PUT if your backend uses PUT
       headers: {
         "Content-Type": "application/json",
+       
+        
       },
+       credentials: "include",
       body: JSON.stringify(data),
     }
   )
@@ -23,7 +27,12 @@ updateUser: async function (userId:string,data:UpdateUserData ) {
 },
 getAllUser: async function () {
     try{
-      const res=await fetch(`${API_URL}/users`)
+       
+      const res=await fetch(`${API_URL}/users`,{
+        headers:{
+    credentials: "include",
+  },
+      })
       const userdata=await res.json()
 
  return {data:userdata,error:null}

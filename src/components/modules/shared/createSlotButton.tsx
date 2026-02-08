@@ -23,6 +23,7 @@ export default function CreateSlotButton({ tutorId }: { tutorId: string }) {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify({
             tutorId,
             dayOfWeek,

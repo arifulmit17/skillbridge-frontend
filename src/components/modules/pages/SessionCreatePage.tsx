@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { env } from "@/env"
+import { authClient } from "@/lib/auth-client"
 
 const NEXT_PUBLIC_API_URL=env.NEXT_PUBLIC_API_URL
 
@@ -48,6 +49,8 @@ export function SessionCreatePage({
   slots: AvailabilitySlot[]
 
 }) {
+    const session=authClient.getSession()
+      console.log(session);
 
     const availableSlots = slots?.filter(
   (slot) => slot.isAvailable && !slot.isBooked
@@ -92,6 +95,7 @@ export function SessionCreatePage({
                 headers:{
                     "Content-Type":"application/json"
                 },
+                credentials: "include",
                 body:JSON.stringify(payload)
             })
             const data=await res.json()

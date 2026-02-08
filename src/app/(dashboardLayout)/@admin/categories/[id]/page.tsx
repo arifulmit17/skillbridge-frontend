@@ -21,7 +21,10 @@ export default function CategoryUpdatePage() {
     const fetchCategory = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/categories/${id}`
+          `${process.env.NEXT_PUBLIC_API_URL}/categories/${id}`,
+          {
+      credentials: "include", 
+    }
         )
 
         if (!res.ok) throw new Error("Failed to fetch category")
@@ -57,6 +60,7 @@ export default function CategoryUpdatePage() {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({ name }),
         }
       )

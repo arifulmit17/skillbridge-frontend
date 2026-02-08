@@ -42,6 +42,7 @@ console.log("Sending review payload:", payload)
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(payload),
       })
 

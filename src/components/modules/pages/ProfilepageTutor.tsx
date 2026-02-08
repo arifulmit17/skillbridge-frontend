@@ -70,6 +70,7 @@ export  function ProfilepageTutor({
                 headers:{
                     "Content-Type":"application/json"
                 },
+                credentials: "include",
                 body:JSON.stringify(payload)
             })
             const data=await res.json()

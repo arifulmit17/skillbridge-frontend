@@ -6,7 +6,7 @@ const API_URL=env.API_URL
 
 
 export const bookingService={
-    getAllSessions: async function () {      
+    getAllSessions: async function () {         
         const data=await fetch(`${API_URL}/teachingsessions/`,{
             cache:'no-store'
         })
@@ -18,6 +18,7 @@ export const bookingService={
             
             
             const data=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${id}`,{
+             credentials: "include",
                 method:"DELETE"
             })
            return {data:data,error:null}
@@ -31,13 +32,17 @@ export const bookingService={
 
 updateSession: async function (sessionId:string,data:UpdateSessionData ) {
     console.log("student id: ",data,"session id:",sessionId);
+    
     const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${sessionId}`,
     {
       method: "PATCH", // or PUT if your backend uses PUT
       headers: {
+        
         "Content-Type": "application/json",
+        
       },
+       credentials: "include",
       body: JSON.stringify(data),
     }
   )

@@ -22,7 +22,10 @@ export default function SearchFormCustom({
     const params = new URLSearchParams()
     if (search) params.append("search", search)
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors?${params.toString()}`,
+  {
+credentials: "include",
+  })
 
     const data = await res.json()
     onResults(data)

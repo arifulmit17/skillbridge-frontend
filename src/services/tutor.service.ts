@@ -1,4 +1,5 @@
 import { env } from "@/env";
+
 const API_URL=env.API_URL
 
 
@@ -42,8 +43,10 @@ export const tutorService={
 
 getTutorById : async function(id:string){
     try{
-        
-         const res=await fetch(`${API_URL}/tutors/${id}`)
+         
+         const res=await fetch(`${API_URL}/tutors/${id}`,{
+            credentials: "include",
+         })
          const data=await res.json()
 //  console.log("Home page session:",session);
  return {data:data,error:null}
@@ -58,7 +61,9 @@ getTutorByUserId : async function(id:string){
         
         const url= new URL(`${API_URL}/tutors/user/?id=${id}`);
         
-         const res=await fetch(url.toString())
+         const res=await fetch(url.toString(),{
+            credentials: "include",
+         })
         
          if (!res.ok) {
   const text = await res.text()

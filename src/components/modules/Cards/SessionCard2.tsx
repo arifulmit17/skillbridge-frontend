@@ -4,13 +4,9 @@ import {
   CardTitle,
   CardContent,
 } from "@/components/ui/card"
-import DeleteButton from "../shared/DeleteButton"
-import CompleteButton from "../shared/CompleteButton"
+
 import { userService } from "@/services/user.service"
-import BookingButton from "../shared/BookingButton"
-import { bookingService } from "@/services/booking.service"
 import { tutorService } from "@/services/tutor.service"
-import ReviewInput from "../shared/ReviewInput"
 
 
 type User = {
@@ -61,24 +57,23 @@ export async function  SessionCard2({ session }: { session: Session }) {
   
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
-   const tutorName=tutorData.data.user.name
+   const tutorName=tutorData?.data?.user?.name
    
-  const start = new Date(session.startTime)
-  const end = new Date(session.endTime)
-  const sessionID=session.studentId
+  const start = session?.startTime
+  const end = session?.endTime
+  const sessionID=session?.studentId
       const { data } = await userService.getSession();
        
     const role= data?.user?.role
     const userId=data?.user?.id
-    const userName=data?.user?.name
+    const userName=session?.student?.name
     let booked=false
     // const {data:teachingSession}=await bookingService.getAllSessions()
     //  const teaching=await teachingSession.json()
     if(userId==sessionID){
        booked=true
     }
-  const durationHours =
-    (end.getTime() - start.getTime()) / (1000 * 60 * 60)
+  
 
   const statusColor = {
     PENDING: "bg-yellow-100 text-yellow-800",
@@ -87,7 +82,7 @@ export async function  SessionCard2({ session }: { session: Session }) {
   }[session.status]
 
   return (
-    <Card className="max-w-md">
+    <Card >
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg">Tutoring Session by {tutorName}</CardTitle>
 
@@ -109,11 +104,8 @@ export async function  SessionCard2({ session }: { session: Session }) {
           <p>{end.toLocaleString()}</p>
         </div>
 
-        <div>
-          <p className="text-muted-foreground">Duration</p>
-          <p>{durationHours.toFixed(1)} hours</p>
-        </div>
-         {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
+        
+         { <h1>Session is Booked by {userName}</h1>}
         
       </CardContent>
     </Card>
