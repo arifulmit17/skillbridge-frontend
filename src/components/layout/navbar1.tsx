@@ -58,6 +58,9 @@ interface Navbar1Props {
   };
 }
 
+
+
+
 const handleLogout = async () => {
   await authClient.signOut({
   fetchOptions: {

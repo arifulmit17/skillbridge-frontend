@@ -3,16 +3,52 @@ import { bookingService } from '@/services/booking.service';
 import { tutorService } from '@/services/tutor.service';
 import { userService } from '@/services/user.service';
 import React from 'react'
+type User = {
+  id: string
+  name: string
+  email: string
+  image: string | null
+  role: string
+  status: string
+  emailVerified: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+type Tutor = {
+  id: string
+  userId: string
+  subject: string
+  price: string
+  status: string
+  isFeatured: boolean
+  categoryId: string
+  createdAt: string
+  updatedAt: string
+}
+
 type Session = {
   id: string
   tutorId: string
   studentId: string
   categoryId: string
-  startTime: string
-  endTime: string
+  availabilitySlotId?: string
+  startTime: string // just time in HH:mm format
+  endTime: string   // just time in HH:mm format
   status: "PENDING" | "COMPLETED" | "CANCELLED"
   createdAt: string
+  updatedAt: string
+  student: User
+  tutor: Tutor
 }
+
+type AvailabilitySlot = {
+  id: string
+  dayOfWeek: string
+  isAvailable: boolean
+  isBooked: boolean
+}
+
 export default async function MySessions() {
      const {data:user}=await userService.getSession()
     const  myId=user.session.userId;
@@ -20,6 +56,7 @@ export default async function MySessions() {
     const authorId=tutor?.id;
     const sessionsData=await bookingService.getAllSessions();
     const sessions=await sessionsData.data.json();
+    console.log(sessions);
     const mySessions=sessions.filter((session:Session)=>session.tutorId===authorId);
     console.log("My sessions:",mySessions);
   return (

@@ -130,10 +130,6 @@ export default async function TutorProfilePage({
           <Card title="Teaching Details">
             <InfoRow label="Subject" value={tutor.subject} />
             <InfoRow label="Hourly Rate" value={`$${tutor.price}`} />
-            <InfoRow
-              label="Member Since"
-              value={new Date(tutor.createdAt).toDateString()}
-            />
           </Card>
         </div>
 

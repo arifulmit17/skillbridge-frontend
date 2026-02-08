@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { UserCard } from '@/components/modules/Cards/UserCard';
 import { userService2 } from '@/services/user2.service';
 

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import ReviewCard from '@/components/modules/Cards/ReviewCard';
 import { SessionCard } from '@/components/modules/Cards/SessionCard';
 import { bookingService } from '@/services/booking.service';

@@ -15,6 +15,10 @@ export const tutorRoutes: Route[] = [
         url: "/tutorprofile",
       },
       {
+        title: "My Availability",
+        url: "/availability",
+      },
+      {
         title: "Arrange Sessions",
         url: "/createSession",
       },

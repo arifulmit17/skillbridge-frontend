@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { bookingService } from "@/services/booking.service";
 import { UpdateSessionData } from "@/types/bookings.type";
+import { toast } from "sonner";
 
 type BookingButtonProps = {
   studentId: string
@@ -15,7 +16,9 @@ export default function BookingButton({studentId,
       console.log("student id: ",studentId,"session id:",sessionId);
        
        const {res}= await bookingService.updateSession(sessionId,{studentId})
-       console.log(res);
+      if(res){
+        toast.success("Session booked successfully")
+      }
        
   }
   return (

@@ -30,6 +30,7 @@ export default function CategoryCreatePage() {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({ name }),
         }
       )
@@ -42,8 +43,12 @@ export default function CategoryCreatePage() {
       setName("")
       toast.success("Category created successfully")
      
-    } catch (err) {
-      setError(err.message)
+    }catch (err: unknown) {
+  if (err instanceof Error) {
+    setError(err.message)
+  } else {
+    setError("Something went wrong")
+  }
     } finally {
       setLoading(false)
     }

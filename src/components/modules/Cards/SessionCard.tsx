@@ -12,31 +12,60 @@ import BookingButton from "../shared/BookingButton"
 import { tutorService } from "@/services/tutor.service"
 import ReviewInput from "../shared/ReviewInput"
 
+type User = {
+  id: string
+  name: string
+  email: string
+  image: string | null
+  role: string
+  status: string
+  emailVerified: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+type Tutor = {
+  id: string
+  userId: string
+  subject: string
+  price: string
+  status: string
+  isFeatured: boolean
+  categoryId: string
+  createdAt: string
+  updatedAt: string
+}
 
 type Session = {
   id: string
   tutorId: string
   studentId: string
   categoryId: string
-  startTime: string
-  endTime: string
+  availabilitySlotId?: string
+  startTime: string // just time in HH:mm format
+  endTime: string   // just time in HH:mm format
   status: "PENDING" | "COMPLETED" | "CANCELLED"
   createdAt: string
+  updatedAt: string
+  student: User
+  tutor: Tutor
 }
 
 
 
+
+
 export async function  SessionCard({ session }: { session: Session }) {
-  
+  console.log(session);
   const tutorId=session.tutor.userId
   const SessionStatus=session.status
   
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
-   const tutorName=tutorData.data.user.name
+   const tutorName=tutorData?.data?.user?.name
    
-  const start = new Date(session.startTime)
-  const end = new Date(session.endTime)
+  const start = session.startTime
+  const end =session.endTime
   const sessionID=session.studentId
       const { data } = await userService.getSession();
        
@@ -49,8 +78,8 @@ export async function  SessionCard({ session }: { session: Session }) {
     if(userId==sessionID){
        booked=true
     }
-  const durationHours =
-    (end.getTime() - start.getTime()) / (1000 * 60 * 60)
+  // const durationHours =
+  //   (end - start) / (1000 * 60 * 60)
 
   const statusColor = {
     PENDING: "bg-yellow-100 text-yellow-800",
@@ -83,7 +112,7 @@ export async function  SessionCard({ session }: { session: Session }) {
 
         <div>
           <p className="text-muted-foreground">Duration</p>
-          <p>{durationHours.toFixed(1)} hours</p>
+          {/* <p>{durationHours.toFixed(1)} hours</p> */}
         </div>
          {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
         <div className="flex gap-2 pt-3">
@@ -98,7 +127,7 @@ export async function  SessionCard({ session }: { session: Session }) {
           )}
           {session.status==="COMPLETED" && <div>
             <h1>Give your review</h1>
-            <ReviewInput tutorId={session.tutorId} userId={data.user.id}></ReviewInput>
+            <ReviewInput tutorId={session.tutorId} userId={data?.user.id}></ReviewInput>
             </div>} 
         </div>
       </CardContent>

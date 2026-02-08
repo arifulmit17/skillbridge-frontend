@@ -5,7 +5,8 @@ import { userService2 } from '@/services/user2.service';
 
 
 
-const handleComplete=async (userId:string,status)=>{
+
+const handleComplete=async (userId:string,status )=>{
      console.log("Updating user with ID:", userId);
       // Implement deletion logic here
       const data =await userService2.updateUser(userId,{ status })

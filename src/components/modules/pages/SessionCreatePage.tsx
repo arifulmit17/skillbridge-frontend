@@ -20,7 +20,12 @@ import { env } from "@/env"
 
 const NEXT_PUBLIC_API_URL=env.NEXT_PUBLIC_API_URL
 
-
+type AvailabilitySlot = {
+  id: string
+  dayOfWeek: string
+  isAvailable: boolean
+  isBooked: boolean
+}
 type Category = {
   id: string
   name: string
@@ -35,13 +40,21 @@ export function SessionCreatePage({
   tutorId,
   studentId,
   categories,
+  slots,
 }: {
   tutorId: string
   studentId: string
   categories: Category[]
+  slots: AvailabilitySlot[]
+
 }) {
+
+    const availableSlots = slots?.filter(
+  (slot) => slot.isAvailable && !slot.isBooked
+) ?? []
   const [formData, setFormData] = useState({
     categoryId: "",
+    availabilitySlotId: "",
     startTime: "",
     endTime: "",
     status: "PENDING",
@@ -56,13 +69,19 @@ export function SessionCreatePage({
 
   const  handleSubmit =async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!formData.availabilitySlotId) {
+  alert("No availability slot selected.")
+  return
+}
+
 
     const payload = {
       tutorId,
       studentId,
       categoryId: formData.categoryId,
-      startTime: new Date(formData.startTime).toISOString(),
-      endTime: new Date(formData.endTime).toISOString(),
+      availabilitySlotId: formData.availabilitySlotId,
+      startTime: formData.startTime,
+      endTime: formData.endTime,
       status: formData.status,
     }
 
@@ -116,13 +135,49 @@ export function SessionCreatePage({
               </select>
             </Field>
 
+            {/* set availability */}
+            <Field>
+  <FieldLabel htmlFor="availabilitySlotId">
+    Availability Slot
+  </FieldLabel>
+
+  <select
+    id="availabilitySlotId"
+    name="availabilitySlotId"
+    required
+    disabled={availableSlots.length === 0}
+    value={formData.availabilitySlotId}
+    onChange={handleChange}
+    className="w-full rounded-md border px-3 py-2 text-sm disabled:opacity-50"
+  >
+    <option value="">
+      {availableSlots.length === 0
+        ? "No available slots"
+        : "Select a slot"}
+    </option>
+
+    {availableSlots.map((slot) => (
+      <option key={slot.id} value={slot.id}>
+        {slot.dayOfWeek}
+      </option>
+    ))}
+  </select>
+
+  <FieldDescription>
+    {availableSlots.length === 0
+      ? "This tutor has no available slots at the moment."
+      : "Choose an available day for this tutor"}
+  </FieldDescription>
+</Field>
+
+
             {/* Start Time */}
             <Field>
               <FieldLabel htmlFor="startTime">Start Time</FieldLabel>
               <Input
                 id="startTime"
                 name="startTime"
-                type="datetime-local"
+                type="time"
                 required
                 value={formData.startTime}
                 onChange={handleChange}
@@ -138,7 +193,7 @@ export function SessionCreatePage({
               <Input
                 id="endTime"
                 name="endTime"
-                type="datetime-local"
+                type="time"
                 required
                 value={formData.endTime}
                 onChange={handleChange}
@@ -165,11 +220,14 @@ export function SessionCreatePage({
             </Field>
 
             {/* Submit */}
-            <Field>
-              <Button type="submit" className="w-full mt-6">
-                Create Session
-              </Button>
-            </Field>
+            <Button
+  type="submit"
+  className="w-full mt-6"
+  disabled={availableSlots.length === 0}
+>
+  Create Session
+</Button>
+
           </FieldGroup>
         </form>
       </CardContent>

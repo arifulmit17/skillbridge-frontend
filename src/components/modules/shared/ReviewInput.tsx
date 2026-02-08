@@ -53,9 +53,13 @@ console.log("Sending review payload:", payload)
       setRating("")
       setComment("")
       toast.success("Review submitted successfully")
-    } catch (err: any) {
-      toast.error(err.message)
-    } finally {
+    } catch (err: unknown) {
+  if (err instanceof Error) {
+    alert(err.message)
+  } else {
+    alert("Something went wrong")
+  }
+    }finally {
       setLoading(false)
     }
   }
