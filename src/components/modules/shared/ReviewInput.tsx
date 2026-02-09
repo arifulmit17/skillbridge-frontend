@@ -56,9 +56,9 @@ console.log("Sending review payload:", payload)
       toast.success("Review submitted successfully")
     } catch (err: unknown) {
   if (err instanceof Error) {
-    alert(err.message)
+    toast.error(err.message)
   } else {
-    alert("Something went wrong")
+    toast.error("Something went wrong")
   }
     }finally {
       setLoading(false)

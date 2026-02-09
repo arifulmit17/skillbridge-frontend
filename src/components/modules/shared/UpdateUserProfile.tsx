@@ -10,7 +10,7 @@ const handleUpdate = async (
   userId: string,
   userdata: UpdateUserData
 ) => {
-  console.log("Updating user with ID:", userId)
+  toast(`Updating user with ID: ${userId}` )
 
   const data = await userService2.updateUser(userId, userdata)
 

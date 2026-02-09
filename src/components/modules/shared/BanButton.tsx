@@ -1,20 +1,21 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { userService2 } from '@/services/user2.service';
+import { toast } from 'sonner';
 
 
 
 
 
 const handleComplete=async (userId:string,status )=>{
-     console.log("Updating user with ID:", userId);
+     toast(`Updating user with ID: ${userId}` );
       // Implement deletion logic here
       const data =await userService2.updateUser(userId,{ status })
        if(data.data){
-        console.log("user updated successfully");
+        toast.success("user updated successfully");
        }
         if(data.error){
-          console.error("Failed to update user:", data.error);
+          toast.error("Failed to update user:", data.error);
         }
 }
 

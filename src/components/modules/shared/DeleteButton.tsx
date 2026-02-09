@@ -2,16 +2,17 @@
 import { Button } from '@/components/ui/button'
 import { bookingService } from '@/services/booking.service';
 import React from 'react'
+import { toast } from 'sonner';
 
 const handleDelete=async  (sessionId:string)=>{
-  console.log("Deleting session with ID:", sessionId);
+ toast(`Updating user with ID: ${sessionId}` );
   // Implement deletion logic here
   const data =await bookingService.deleteSession(sessionId)
    if(data.data){
-    console.log("session deleted successfully");
+    toast.success("session deleted successfully");
    }
     if(data.error){
-      console.error("Failed to delete session:", data.error);
+      toast.error("Failed to delete session:", data.error);
     }
 }
 
