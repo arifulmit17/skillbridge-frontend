@@ -47,7 +47,7 @@ export default async function  PopularSessions() {
           const pendingSessions = sessions?.filter(
   (session:Session) => session.status === "PENDING"
 ) ?? []
-console.log(pendingSessions);
+
 
 
   return (

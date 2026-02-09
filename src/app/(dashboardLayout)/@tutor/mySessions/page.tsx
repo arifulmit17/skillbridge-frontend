@@ -60,8 +60,19 @@ export default async function MySessions() {
     const mySessions=sessions.filter((session:Session)=>session.tutorId===authorId);
     console.log("My sessions:",mySessions);
   return (
-    <div>
-        {mySessions.length === 0 ? <p>No sessions available.</p> : 
-        mySessions?.map((session:Session)=>(<SessionCard key={session.id} session={session}></SessionCard>))}
-</div>)
+   <div>
+  {Array.isArray(mySessions) && mySessions.length > 0 ? (
+    mySessions.map((session: Session) => (
+      <SessionCard key={session.id} session={session} />
+    ))
+  ) : (
+    <div className="text-center py-10 text-muted-foreground">
+      <p className="text-lg font-medium">No sessions found</p>
+      <p className="text-sm">
+        You don’t have any sessions yet.
+      </p>
+    </div>
+  )}
+</div>
+)
 }

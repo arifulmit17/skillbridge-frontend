@@ -38,11 +38,19 @@ export default function TutorPage() {
           <div>
              <SearchFormCustom onResults={setTutors}></SearchFormCustom>
           </div>
-          <div className='w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5'>
-            {tutors.map((tutor:Tutor)=><TutorCard key={tutor.id} tutor={tutor}></TutorCard> )} 
-              
-              
-        </div>
+         <div className='w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5'>
+  {tutors && tutors.length > 0 ? (
+    tutors.map((tutor: Tutor) => (
+      <TutorCard key={tutor.id} tutor={tutor} />
+    ))
+  ) : (
+    <div className="col-span-full text-center py-10 text-muted-foreground">
+      <p className="text-lg font-medium">No tutors available</p>
+      <p className="text-sm">Please adjust your search or check back later.</p>
+    </div>
+  )}
+</div>
+
 
          </div>
         

@@ -22,10 +22,17 @@ export default async function page() {
             const myReviews=userReview.filter((b:Review) => b.userId === myId);
             
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
-      {
-        !myReviews ? <h1>No review available , Please book a review</h1>: myReviews.map((review:Review )=><ReviewCard  key={review.id} review={review}></ReviewCard>) 
-      }
-    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+  {Array.isArray(myReviews) && myReviews.length > 0 ? (
+    myReviews.map((review: Review) => (
+      <ReviewCard key={review.id} review={review} />
+    ))
+  ) : (
+    <p className="col-span-1 lg:col-span-2 text-center text-muted-foreground">
+      No reviews available. Book a session to leave a review.
+    </p>
+  )}
+</div>
+
   )
 }

@@ -23,8 +23,19 @@ export default async function TutorReviewsPage() {
     
   return (
     <div>
-         {filteredReviews.length === 0 ? <p>No reviews available for this tutor.</p> : 
-        filteredReviews?.map((review:Review)=>(<ReviewPage key={review.id} review={review}></ReviewPage>))}
+  {Array.isArray(filteredReviews) && filteredReviews.length > 0 ? (
+    filteredReviews.map((review: Review) => (
+      <ReviewPage key={review.id} review={review} />
+    ))
+  ) : (
+    <div className="text-center py-10 text-muted-foreground">
+      <p className="text-lg font-medium">No reviews yet</p>
+      <p className="text-sm">
+        This tutor hasn’t received any reviews so far.
+      </p>
     </div>
+  )}
+</div>
+
   )
 }

@@ -57,23 +57,23 @@ type Session = {
 
 
 export async function  SessionCard({ session }: { session: Session }) {
-  console.log(session);
-  const tutorId=session.tutor.userId
-  const SessionStatus=session.status
+  // console.log(session);
+  const tutorId=session?.tutor.userId
+  const SessionStatus=session?.status
   
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
    const tutorName=tutorData?.data?.user?.name
-  const start = session.startTime
-  const end =session.endTime
-  const sessionID=session.studentId
-      const { data } = await userService.getSession();
+  const start = session?.startTime
+  const end =session?.endTime
+  const sessionID=session?.studentId
+      const { data} = await userService.getSession();
        
     const role= data?.user?.role
     const userId=data?.user?.id
     const userName=data?.user?.name
     let booked=false
-    // const {data:teachingSession}=await bookingService.getAllSessions()
+    // const {data?:teachingSession}=await bookingService.getAllSessions()
     //  const teaching=await teachingSession.json()
     if(userId==sessionID){
        booked=true
@@ -85,7 +85,7 @@ export async function  SessionCard({ session }: { session: Session }) {
     PENDING: "bg-yellow-100 text-yellow-800",
     COMPLETED: "bg-green-100 text-green-800",
     CANCELLED: "bg-red-100 text-red-800",
-  }[session.status]
+  }[session?.status]
 
   return (
     <Card className="max-w-md">
@@ -95,7 +95,7 @@ export async function  SessionCard({ session }: { session: Session }) {
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${statusColor}`}
         >
-          {session.status}
+          {session?.status}
         </span>
       </CardHeader>
 
@@ -115,19 +115,19 @@ export async function  SessionCard({ session }: { session: Session }) {
 
         
          {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
-        <div className="flex gap-2 pt-3">
-            {role=="admin" && <DeleteButton sessionId={session.id}></DeleteButton>}
-          {session.status === "PENDING" && (
+        <div className="lg:flex flex-col gap-2 pt-3">
+            {role=="admin" && <DeleteButton sessionId={session?.id}></DeleteButton>}
+          {session?.status === "PENDING" && (
             <>
-              <DeleteButton sessionId={session.id}></DeleteButton>
-             {!booked && <BookingButton studentId={data.user.id} sessionId={session.id}></BookingButton>} 
+              <DeleteButton sessionId={session?.id}></DeleteButton>
+             {!booked && <BookingButton studentId={data?.user.id} sessionId={session?.id}></BookingButton>} 
               
-              <CompleteButton sessionId={session.id}></CompleteButton>
+              <CompleteButton sessionId={session?.id}></CompleteButton>
             </>
           )}
-          {session.status==="COMPLETED" && <div>
+          {session?.status==="COMPLETED" && <div>
             <h1>Give your review</h1>
-            <ReviewInput tutorId={session.tutorId} userId={data?.user.id}></ReviewInput>
+            <ReviewInput tutorId={session?.tutorId} userId={data?.user?.id}></ReviewInput>
             </div>} 
         </div>
       </CardContent>

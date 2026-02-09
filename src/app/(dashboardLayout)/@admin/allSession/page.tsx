@@ -48,9 +48,17 @@ export default async function Allsessionpage() {
       const sessions=await sessionsData.data.json();
 
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
-        {sessions.length === 0 ? <p>No sessions available.</p> : 
-                sessions?.map((session:Session)=>(<SessionCard key={session.id} session={session}></SessionCard>))}
-    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+  {Array.isArray(sessions) && sessions.length > 0 ? (
+    sessions.map((session: Session) => (
+      <SessionCard key={session.id} session={session} />
+    ))
+  ) : (
+    <p className="col-span-1 lg:col-span-2 text-center text-muted-foreground">
+      No sessions available
+    </p>
+  )}
+</div>
+
   )
 }

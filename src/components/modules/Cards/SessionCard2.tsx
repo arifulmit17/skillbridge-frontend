@@ -52,8 +52,8 @@ type Session = {
 
 export async function  SessionCard2({ session }: { session: Session }) {
   
-  const tutorId=session.tutor.userId
-  const SessionStatus=session.status
+  const tutorId=session?.tutor.userId
+  const SessionStatus=session?.status
   
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
@@ -79,7 +79,7 @@ export async function  SessionCard2({ session }: { session: Session }) {
     PENDING: "bg-yellow-100 text-yellow-800",
     COMPLETED: "bg-green-100 text-green-800",
     CANCELLED: "bg-red-100 text-red-800",
-  }[session.status]
+  }[session?.status]
 
   return (
     <Card >
@@ -89,7 +89,7 @@ export async function  SessionCard2({ session }: { session: Session }) {
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${statusColor}`}
         >
-          {session.status}
+          {session?.status}
         </span>
       </CardHeader>
 

@@ -55,7 +55,7 @@ export function LoginForm({
   }
 
   const session=authClient.getSession()
-  console.log(session);
+  // console.log(session);
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>

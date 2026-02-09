@@ -28,12 +28,19 @@ export default async function MyTutors() {
         console.log(tutor);
   return (
     <div>
-             {
-                tutor?.map((tutor:Tutor)=><TutorProfile key={tutor.id} tutor={tutor}></TutorProfile>)
-             } 
-            
-            
-            
-        </div>
+  {Array.isArray(tutor) && tutor.length > 0 ? (
+    tutor.map((t: Tutor) => (
+      <TutorProfile key={t.id} tutor={t} />
+    ))
+  ) : (
+    <div className="text-center py-10 text-muted-foreground">
+      <p className="text-lg font-medium">No tutor profile found</p>
+      <p className="text-sm">
+        This tutor profile is not available or has not been created yet.
+      </p>
+    </div>
+  )}
+</div>
+
   )
 }

@@ -23,10 +23,30 @@ export default async function CreateSessionPage() {
             const categoryList=await category.json();
             const slotList=await slot.json()
             const studentid="uvDEjuFHNU2cW4EIw9hD9LAQNGkgVwqt";
-            console.log(slotList);
+            // console.log(slotList);
   return (
     <div>
-        <SessionCreatePage slots={slotList.data} tutorId={tutor?.id} studentId={studentid} categories={categoryList}></SessionCreatePage>
+  {slotList?.data &&
+  tutor?.id &&
+  studentid &&
+  Array.isArray(categoryList) &&
+  categoryList.length > 0 ? (
+    <SessionCreatePage
+      slots={slotList.data}
+      tutorId={tutor.id}
+      studentId={studentid}
+      categories={categoryList}
+    />
+  ) : (
+    <div className="text-center py-10 text-muted-foreground">
+      <p className="text-lg font-medium">Unable to create session</p>
+      <p className="text-sm">
+        Required data is missing. Please make sure tutor, categories, and
+        availability slots are available.
+      </p>
     </div>
+  )}
+</div>
+
   )
 }
