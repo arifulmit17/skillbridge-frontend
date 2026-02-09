@@ -21,16 +21,16 @@ type Tutor = {
   }
 }
 export default async function MyTutors() {
-    const {data:user}=await userService.getSession()
-        const  myId=user.session.userId;
-        console.log(myId);
-        const {data:tutor}=await tutorService.getTutorByUserId(myId);
-        console.log(tutor);
+    const {data:user}=await userService?.getSession()
+        const  myId=user?.session?.userId;
+        // console.log(myId);
+        const {data:tutor}=await tutorService?.getTutorByUserId(myId);
+        // console.log(tutor);
   return (
     <div>
-  {Array.isArray(tutor) && tutor.length > 0 ? (
-    tutor.map((t: Tutor) => (
-      <TutorProfile key={t.id} tutor={t} />
+  {Array.isArray(tutor) && tutor?.length > 0 ? (
+    tutor?.map((t: Tutor) => (
+      <TutorProfile key={t?.id} tutor={t} />
     ))
   ) : (
     <div className="text-center py-10 text-muted-foreground">

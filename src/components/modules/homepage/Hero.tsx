@@ -42,7 +42,7 @@ export function Hero() {
   <Carousel className="relative w-full h-1/2">
      
     <CarouselContent className="h-1/2">
-      {slides.map((slide, index) => (
+      {slides?.map((slide, index) => (
         <CarouselItem
           key={index}
           className="h-1/2 flex items-stretch"
@@ -52,8 +52,8 @@ export function Hero() {
               
               {/* Image */}
               <Image
-                src={slide.image}
-                alt={slide.title}
+                src={slide?.image}
+                alt={slide?.title}
                 fill
                 className="object-cover"
                 priority={index === 0}
@@ -65,10 +65,10 @@ export function Hero() {
               {/* Text */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                 <h1 className="text-3xl md:text-5xl font-bold text-white mb-3">
-                  {slide.title}
+                  {slide?.title}
                 </h1>
                 <p className="text-white/90 text-lg mb-6 max-w-xl">
-                  {slide.subtitle}
+                  {slide?.subtitle}
                 </p>
 
                 <Link href="/tutors">

@@ -22,13 +22,13 @@ type Tutor = {
   }[]
 }
 export  default async function AllTutorpage() {
-    const {data}=await tutorService.getTutor();
+    const {data}=await tutorService?.getTutor();
      
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-  {Array.isArray(data) && data.length > 0 ? (
-    data.map((tutor: Tutor) => (
-      <TutorCard key={tutor.id} tutor={tutor} />
+  {Array.isArray(data) && data?.length > 0 ? (
+    data?.map((tutor: Tutor) => (
+      <TutorCard key={tutor?.id} tutor={tutor} />
     ))
   ) : (
     <p className="col-span-1 lg:col-span-2 text-center text-muted-foreground">

@@ -57,24 +57,24 @@ type Session = {
 
 
 export async function  SessionCard({ session }: { session: Session }) {
-  // console.log(session);
-  const tutorId=session?.tutor.userId
+  // console?.log(session);
+  const tutorId=session?.tutor?.userId
   const SessionStatus=session?.status
   
  
-   const tutorData=await tutorService.getTutorByUserId(tutorId)
+   const tutorData=await tutorService?.getTutorByUserId(tutorId)
    const tutorName=tutorData?.data?.user?.name
   const start = session?.startTime
   const end =session?.endTime
   const sessionID=session?.studentId
-      const { data} = await userService.getSession();
+      const { data} = await userService?.getSession();
        
     const role= data?.user?.role
     const userId=data?.user?.id
     const userName=data?.user?.name
     let booked=false
-    // const {data?:teachingSession}=await bookingService.getAllSessions()
-    //  const teaching=await teachingSession.json()
+    // const {data?:teachingSession}=await bookingService?.getAllSessions()
+    //  const teaching=await teachingSession?.json()
     if(userId==sessionID){
        booked=true
     }
@@ -105,12 +105,12 @@ export async function  SessionCard({ session }: { session: Session }) {
         </div>
         <div>
           <p className="text-muted-foreground">Start</p>
-          <p>{start.toLocaleString()}</p>
+          <p>{start?.toLocaleString()}</p>
         </div>
         
         <div>
           <p className="text-muted-foreground">End</p>
-          <p>{end.toLocaleString()}</p>
+          <p>{end?.toLocaleString()}</p>
         </div>
 
         
@@ -120,7 +120,7 @@ export async function  SessionCard({ session }: { session: Session }) {
           {session?.status === "PENDING" && (
             <>
               <DeleteButton sessionId={session?.id}></DeleteButton>
-             {!booked && <BookingButton studentId={data?.user.id} sessionId={session?.id}></BookingButton>} 
+             {!booked && <BookingButton studentId={data?.user?.id} sessionId={session?.id}></BookingButton>} 
               
               <CompleteButton sessionId={session?.id}></CompleteButton>
             </>

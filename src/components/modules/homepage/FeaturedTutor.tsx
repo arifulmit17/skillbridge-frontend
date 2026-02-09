@@ -22,13 +22,13 @@ type Tutor = {
   }[]
 }
 export default async function FeaturedTutor() {
-  const data=await tutorService.getTutor({
+  const data=await tutorService?.getTutor({
       isFeatured: true,
     },)
   
   return (
     <div className='w-11/12 grid grid-cols-1 lg:grid-cols-3 gap-5'>
-        {data?.data?.map((tutor:Tutor)=><TutorCard key={tutor.id} tutor={tutor}></TutorCard>)}
+        {data?.data?.map((tutor:Tutor)=><TutorCard key={tutor?.id} tutor={tutor}></TutorCard>)}
     </div>
   )
 }

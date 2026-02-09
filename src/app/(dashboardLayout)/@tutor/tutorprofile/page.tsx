@@ -8,13 +8,13 @@ import { userService } from '@/services/user.service'
 import React from 'react'
 
 export default   async function profile() {
-    const {data:user}=await userService.getSession()
-    const  myId=user.session.userId;
-    const {data:tutor}=await tutorService.getTutorByUserId(myId);
+    const {data:user}=await userService?.getSession()
+    const  myId=user?.session?.userId;
+    const {data:tutor}=await tutorService?.getTutorByUserId(myId);
     
-    const {data:category}=await categoriesService.getAllCategories();
-    const categoryList=await category.json();
-    console.log(categoryList);
+    const {data:category}=await categoriesService?.getAllCategories();
+    const categoryList=await category?.json();
+    // console.log(categoryList);
   return (
     <div>
          {tutor ? <TutorProfile tutor={tutor}></TutorProfile>:

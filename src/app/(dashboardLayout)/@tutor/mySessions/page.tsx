@@ -50,20 +50,20 @@ type AvailabilitySlot = {
 }
 
 export default async function MySessions() {
-     const {data:user}=await userService.getSession()
-    const  myId=user.session.userId;
-    const {data:tutor}=await tutorService.getTutorByUserId(myId);
+     const {data:user}=await userService?.getSession()
+    const  myId=user?.session?.userId;
+    const {data:tutor}=await tutorService?.getTutorByUserId(myId);
     const authorId=tutor?.id;
-    const sessionsData=await bookingService.getAllSessions();
-    const sessions=await sessionsData.data.json();
-    console.log(sessions);
-    const mySessions=sessions.filter((session:Session)=>session.tutorId===authorId);
-    console.log("My sessions:",mySessions);
+    const sessionsData=await bookingService?.getAllSessions();
+    const sessions=await sessionsData?.data?.json();
+    console?.log(sessions);
+    const mySessions=sessions?.filter((session:Session)=>session?.tutorId===authorId);
+    console?.log("My sessions:",mySessions);
   return (
    <div>
-  {Array.isArray(mySessions) && mySessions.length > 0 ? (
-    mySessions.map((session: Session) => (
-      <SessionCard key={session.id} session={session} />
+  {Array.isArray(mySessions) && mySessions?.length > 0 ? (
+    mySessions?.map((session: Session) => (
+      <SessionCard key={session?.id} session={session} />
     ))
   ) : (
     <div className="text-center py-10 text-muted-foreground">

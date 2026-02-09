@@ -30,7 +30,7 @@ export default function TutorPage() {
   
   const [tutors, setTutors] = useState<Tutor[]>([])
   
-  console.log(tutors);
+  // console.log(tutors);
   return (
     
          <div className='flex flex-col gap-10'>
@@ -39,9 +39,9 @@ export default function TutorPage() {
              <SearchFormCustom onResults={setTutors}></SearchFormCustom>
           </div>
          <div className='w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5'>
-  {tutors && tutors.length > 0 ? (
-    tutors.map((tutor: Tutor) => (
-      <TutorCard key={tutor.id} tutor={tutor} />
+  {tutors && tutors?.length > 0 ? (
+    tutors?.map((tutor: Tutor) => (
+      <TutorCard key={tutor?.id} tutor={tutor} />
     ))
   ) : (
     <div className="col-span-full text-center py-10 text-muted-foreground">

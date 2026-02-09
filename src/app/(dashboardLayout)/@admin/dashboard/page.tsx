@@ -6,19 +6,19 @@ import { userService2 } from "@/services/user2.service";
 export const dynamic = "force-dynamic"
 export default async function AdminDashboard() {
 
-  const {data:users}=await userService2.getAllUser()
-  const tutor=users?.filter(user=>user.role==="tutor")
-  const student=users?.filter(user=>user.role==="student")
-  const {data:sessions}=await bookingService.getAllSessions()
+  const {data:users}=await userService2?.getAllUser()
+  const tutor=users?.filter(user=>user?.role==="tutor")
+  const student=users?.filter(user=>user?.role==="student")
+  const {data:sessions}=await bookingService?.getAllSessions()
   const Sessions=await sessions.json()
-  const sessionlength=Array.isArray(Sessions) ? Sessions.length : 0
-  const {data:cats}=await categoriesService.getAllCategories()
+  const sessionlength=Array.isArray(Sessions) ? Sessions?.length : 0
+  const {data:cats}=await categoriesService?.getAllCategories()
   const Cats=await cats.json()
-  const Catlength=Array.isArray(Cats) ? Cats.length : 0
-  const { data: reviewsRes } = await reviewsService.getAllReviews()
+  const Catlength=Array.isArray(Cats) ? Cats?.length : 0
+  const { data: reviewsRes } = await reviewsService?.getAllReviews()
 
 const reviews = reviewsRes ? await reviewsRes.json() : []
-const reviewLength = Array.isArray(reviews) ? reviews.length : 0
+const reviewLength = Array.isArray(reviews) ? reviews?.length : 0
 
  
  
@@ -27,15 +27,15 @@ const reviewLength = Array.isArray(reviews) ? reviews.length : 0
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
   <div className="rounded-xl border bg-white p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Users</p>
-    <h2 className="mt-2 text-3xl font-bold">{users.length}</h2>
+    <h2 className="mt-2 text-3xl font-bold">{users?.length}</h2>
   </div>
   <div className="rounded-xl border bg-white p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Tutor</p>
-    <h2 className="mt-2 text-3xl font-bold">{tutor.length}</h2>
+    <h2 className="mt-2 text-3xl font-bold">{tutor?.length}</h2>
   </div>
   <div className="rounded-xl border bg-white p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Student</p>
-    <h2 className="mt-2 text-3xl font-bold">{student.length}</h2>
+    <h2 className="mt-2 text-3xl font-bold">{student?.length}</h2>
   </div>
 
   <div className="rounded-xl border bg-white p-6 shadow-sm">

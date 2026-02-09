@@ -21,30 +21,30 @@ export function UserCard({ user }: { user: User }) {
     <div className="flex items-start gap-4">
       {/* Avatar placeholder */}
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-sm font-semibold uppercase">
-        {user.name?.charAt(0) || "U"}
+        {user?.name?.charAt(0) || "U"}
       </div>
 
       {/* User Info */}
       <div className="flex-1 space-y-1">
         <h3 className="text-lg font-semibold leading-tight">
-          {user.name}
+          {user?.name}
         </h3>
 
         <p className="text-sm text-muted-foreground">
-          {user.email}
+          {user?.email}
         </p>
 
         {/* Badges */}
         <div className="flex flex-wrap items-center gap-2 pt-2">
-          <Badge variant="secondary">{user.role}</Badge>
+          <Badge variant="secondary">{user?.role}</Badge>
 
           <Badge
-            variant={user.status === "Unbanned" ? "default" : "destructive"}
+            variant={user?.status === "Unbanned" ? "default" : "destructive"}
           >
-            {user.status}
+            {user?.status}
           </Badge>
 
-          {user.emailVerified ? (
+          {user?.emailVerified ? (
             <Badge variant="outline">Email Verified</Badge>
           ) : (
             <Badge variant="outline" className="text-yellow-600 border-yellow-400">
@@ -57,7 +57,7 @@ export function UserCard({ user }: { user: User }) {
 
     {/* Actions */}
     <div className="mt-4 flex justify-end">
-      <BanButton userId={user.id} />
+      <BanButton userId={user?.id} />
     </div>
   </CardContent>
 </Card>

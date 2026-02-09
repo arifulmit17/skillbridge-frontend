@@ -22,23 +22,23 @@ export function CategoryCard({ category }: CategoryCardProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold capitalize group-hover:text-primary transition">
-            {category.name}
+            {category?.name}
           </h3>
 
           <Badge variant="secondary">
-            {category._count.tutors} Tutors
+            {category?._count?.tutors} Tutors
           </Badge>
         </div>
 
         {/* Meta */}
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <span>📚 {category._count.bookings} Bookings</span>
+          <span>📚 {category?._count?.bookings} Bookings</span>
         </div>
 
         {/* Footer */}
         <div className="w-1/3 flex flex-col lg:flex-row justify-between">
-        <Link href={`/categories/${category.id}`}><Button>update</Button></Link>
-        <DeleteCategoryButton categoryId={category.id}></DeleteCategoryButton>
+        <Link href={`/categories/${category?.id}`}><Button>update</Button></Link>
+        <DeleteCategoryButton categoryId={category?.id}></DeleteCategoryButton>
         </div>
        
         

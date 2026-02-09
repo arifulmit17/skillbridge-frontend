@@ -14,17 +14,17 @@ type   category= {
 }
 
 export default async function Categorypage() {
-    const {data}=await categoriesService.getAllCategories()
-    const categoryList=await data.json();
-    // console.log(categoryList);
+    const {data}=await categoriesService?.getAllCategories()
+    const categoryList=await data?.json();
+    // console?.log(categoryList);
   return (
     <div className="space-y-4">
     <h2 className="text-lg font-semibold">Categories</h2>
 
     <div className="w-11/12 grid grid-cols-3 gap-5">
-          {categoryList.length > 0 ? (
-            categoryList.map((category) => (
-              <CategoryCard key={category.id} category={category} />
+          {categoryList?.length > 0 ? (
+            categoryList?.map((category) => (
+              <CategoryCard key={category?.id} category={category} />
             ))
           ) : (
             <p className="col-span-3 text-center text-muted-foreground">
