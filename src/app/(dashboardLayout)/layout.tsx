@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { authClient } from "@/lib/auth-client";
 import { userService } from "@/services/user.service";
+import { Children } from "react";
 
 export default async function DashboardLayout({
     student,

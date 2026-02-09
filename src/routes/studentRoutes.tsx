@@ -4,7 +4,7 @@ import { Route } from "@/types/routes.type";
 
 export const studentRoutes: Route[] = [
   {
-    title: "Sessions",
+    title: "Student Dashboard",
     items: [
       {
         title: "Home",

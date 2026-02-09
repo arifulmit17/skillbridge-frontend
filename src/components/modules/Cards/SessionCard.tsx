@@ -11,6 +11,7 @@ import BookingButton from "../shared/BookingButton"
 
 import { tutorService } from "@/services/tutor.service"
 import ReviewInput from "../shared/ReviewInput"
+import { availabilityService } from "@/services/availability.service"
 
 type User = {
   id: string
@@ -63,7 +64,6 @@ export async function  SessionCard({ session }: { session: Session }) {
  
    const tutorData=await tutorService.getTutorByUserId(tutorId)
    const tutorName=tutorData?.data?.user?.name
-   
   const start = session.startTime
   const end =session.endTime
   const sessionID=session.studentId
@@ -101,6 +101,9 @@ export async function  SessionCard({ session }: { session: Session }) {
 
       <CardContent className="space-y-3 text-sm">
         <div>
+          <p>Session date: Today</p>
+        </div>
+        <div>
           <p className="text-muted-foreground">Start</p>
           <p>{start.toLocaleString()}</p>
         </div>
@@ -110,10 +113,7 @@ export async function  SessionCard({ session }: { session: Session }) {
           <p>{end.toLocaleString()}</p>
         </div>
 
-        <div>
-          <p className="text-muted-foreground">Duration</p>
-          {/* <p>{durationHours.toFixed(1)} hours</p> */}
-        </div>
+        
          {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
         <div className="flex gap-2 pt-3">
             {role=="admin" && <DeleteButton sessionId={session.id}></DeleteButton>}
