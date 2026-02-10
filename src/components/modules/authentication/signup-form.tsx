@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
 import { toast } from "sonner"
+import { z } from "zod"
 
 export  function SignupForm(props: React.ComponentProps<typeof Card>) {
   const [formData, setFormData] = useState({
@@ -28,6 +29,17 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
     role: "tutor",
     image: "",
   })
+
+  
+
+const signupSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  role: z.enum(["student", "tutor"]),
+  image: z.string().url("Image must be a valid URL").optional().or(z.literal("")),
+})
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -46,6 +58,16 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
       image: formData.image || undefined,
     }
 
+    const result = signupSchema.safeParse(payload)
+
+if (!result.success) {
+  result.error.issues.forEach((issue) => {
+    toast.error(issue.message)
+  })
+  return
+}
+
+
     console.log("Signup payload:", payload)
     try {
       const { data, error } = await authClient.signUp.email(payload)
@@ -54,12 +76,12 @@ export  function SignupForm(props: React.ComponentProps<typeof Card>) {
         window.location.href="/"
       }
       if (error) {
-        console.error("Signup error:", error)
+        toast.error(`Signup error: ${error}`)
         return
       }
       
     }catch (error) {
-      console.error("Signup error:", error)
+      toast.error(`Signup error: ${error}`)
       toast.error("Signup not successful, Please try again.")
     }
   }
