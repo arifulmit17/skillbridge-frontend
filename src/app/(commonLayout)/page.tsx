@@ -16,11 +16,11 @@ export default async function Home() {
   // console.log("Home page session data:",data);
  
   return (
-    <div className="min-h-screen">
-      <section className="border border-black">
+    <div className="min-h-screen bg-muted/40">
+      <section className="">
           <Hero></Hero>
       </section>
-      <section className="w-full flex flex-col justify-center items-center gap-10 mt-0 lg:mt-100">
+      <section className="w-full flex flex-col justify-center items-center gap-10 mt-0 lg:mt-40">
             <div className="w-full text-5xl text-center"> 
                <h1 >Featured Tutors</h1>
             </div>

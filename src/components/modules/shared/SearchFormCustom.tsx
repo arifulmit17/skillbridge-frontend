@@ -34,7 +34,7 @@ credentials: "include",
   }
 
   return (
-    <Card className="rounded-2xl shadow-sm">
+    <Card className="rounded-2xl">
       <CardContent className="p-4">
         <form
           onSubmit={handleSubmit}

@@ -47,7 +47,7 @@ export function Hero() {
           key={index}
           className="h-1/2 flex items-stretch"
         >
-          <Card className="h-1/2 w-full border-0">
+          <Card className="h-1/2 w-full">
             <CardContent className="relative h-130 p-0">
               
               {/* Image */}

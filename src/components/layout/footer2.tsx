@@ -32,39 +32,25 @@ const Footer2 = ({
   className,
   tagline = "Components made easy.",
   menuItems = [
+    
     {
-      title: "Company",
+      title: "Resourses",
       links: [
-        { text: "About", url: "#" },
-        { text: "Team", url: "#" },
-        { text: "Blog", url: "#" },
-        { text: "Careers", url: "#" },
-        { text: "Contact", url: "#" },
-        { text: "Privacy", url: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { text: "Help", url: "#" },
-        { text: "Sales", url: "#" },
-        { text: "Advertise", url: "#" },
+        { text: "Tutors", url: "/tutors" },
+        { text: "Sessions", url: "/sessions" },
+        { text: "Dashboard", url: "/dashboard" },
       ],
     },
     {
       title: "Social",
       links: [
-        { text: "Twitter", url: "#" },
-        { text: "Instagram", url: "#" },
-        { text: "LinkedIn", url: "#" },
+        { text: "Twitter", url: "https://x.com/" },
+        { text: "Instagram", url: "https://www.instagram.com/" },
+        { text: "LinkedIn", url: "https://www.linkedin.com/" },
       ],
     },
   ],
   copyright = "© 2026 skillbridge All rights reserved.",
-  bottomLinks = [
-    { text: "Terms and Conditions", url: "#" },
-    { text: "Privacy Policy", url: "#" },
-  ],
 }: Footer2Props) => {
   return (
     <section className={cn("py-32", className)}>
