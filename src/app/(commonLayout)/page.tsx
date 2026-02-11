@@ -2,6 +2,7 @@ import Categories from "@/components/modules/homepage/Categories";
 import FaqSection from "@/components/modules/homepage/FAQSection";
 import FeaturedTutor from "@/components/modules/homepage/FeaturedTutor";
 import { Hero } from "@/components/modules/homepage/Hero";
+import ReviewSection from "@/components/modules/homepage/ReviewSection";
 import PopularSessions from "@/components/modules/pages/PopularSessions";
 import { tutorService } from "@/services/tutor.service";
 import { userService } from "@/services/user.service";
@@ -40,6 +41,13 @@ export default async function Home() {
             </div>
             
            <Categories></Categories>
+      </section>
+      <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
+            <div className="w-full text-5xl text-center"> 
+               <h1 >Student Reviews</h1>
+            </div>
+            
+           <ReviewSection></ReviewSection>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
             <div className="w-full text-5xl text-center"> 

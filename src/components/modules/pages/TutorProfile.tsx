@@ -1,4 +1,5 @@
 import Link from "next/link"
+import UpdateUserProfile from "../shared/UpdateUserProfile"
 
 
 
@@ -72,8 +73,10 @@ function Badge({
 
 export default async function TutorProfilePage({
   tutor,
+  userId,
 }: {
-  tutor: TutorProfile
+  tutor: TutorProfile,
+  userId?: string
 }) {
     
        
@@ -142,9 +145,9 @@ export default async function TutorProfilePage({
           </Card>
 
           <div className="rounded-2xl border bg-white p-6">
-            <button className="w-full rounded-xl bg-primary py-3 text-white font-medium hover:bg-primary/90 transition">
-              Request Booking
-            </button>
+               
+              <UpdateUserProfile userId={userId}></UpdateUserProfile>
+           
           </div>
         </div>
       </section>

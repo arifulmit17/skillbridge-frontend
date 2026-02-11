@@ -17,7 +17,7 @@ export default   async function profile() {
     // console.log(categoryList);
   return (
     <div>
-         {tutor ? <TutorProfile tutor={tutor}></TutorProfile>:
+         {tutor ? <TutorProfile userId={myId} tutor={tutor}></TutorProfile>:
         <ProfilepageTutor userId={myId} categories={categoryList}></ProfilepageTutor>}
         
         

@@ -28,7 +28,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function ReviewPage({ review }: { review: Review }) {
   return (
-    <div className="min-h-screen bg-muted/30 px-6 py-12">
+    <div className="max-h-screen bg-muted/30 px-6 py-5">
       <div className="mx-auto max-w-2xl rounded-2xl bg-white border p-8 shadow-sm">
         {/* Header */}
         <div className="flex items-center justify-between">

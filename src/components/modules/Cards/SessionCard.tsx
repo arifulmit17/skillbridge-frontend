@@ -119,7 +119,7 @@ export async function  SessionCard({ session }: { session: Session }) {
             {role=="admin" && <DeleteButton sessionId={session?.id}></DeleteButton>}
           {session?.status === "PENDING" && (
             <>
-              <DeleteButton sessionId={session?.id}></DeleteButton>
+              <DeleteButton sessionId={session?.id}></DeleteButton> 
              {!booked && <BookingButton studentId={data?.user?.id} sessionId={session?.id}></BookingButton>} 
               
               <CompleteButton sessionId={session?.id}></CompleteButton>

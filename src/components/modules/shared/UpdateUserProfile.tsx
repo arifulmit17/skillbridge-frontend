@@ -26,7 +26,6 @@ const handleUpdate = async (
 export default function UpdateUserProfile({ userId }: { userId: string }) {
   const [name, setName] = useState("")
   const [emailVerified, setEmailVerified] = useState(false)
-  
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 

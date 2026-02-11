@@ -9,7 +9,7 @@ export default async function Tutorpage({ params }: { params: Promise<{ id: stri
   return (
     <div>
   {data?.data ? (
-    <TutorProfilePage tutor={data.data} />
+    <TutorProfilePage  tutor={data.data} />
   ) : (
     <div className="text-center py-10 text-muted-foreground">
       <p className="text-lg font-medium">No tutor data available</p>
