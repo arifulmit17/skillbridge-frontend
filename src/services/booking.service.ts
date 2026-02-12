@@ -12,11 +12,9 @@ export const bookingService={
         })
        return {data:data,error:null}
     },
-    deleteSession: async function (id:string) {      
+    deleteSession: async function (id:string) { 
+      console.log(id);     
         try{
-
-            
-            
             const data=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${id}`,{
              credentials: "include",
                 method:"DELETE"
@@ -24,14 +22,14 @@ export const bookingService={
            return {data:data,error:null}
         }
         catch(err){
-            console.log(err);
+            // console.log(err);
             return {data:null,error:{message:"Failed to delete session"}}
         }
 },
 
 
 updateSession: async function (sessionId:string,data:UpdateSessionData ) {
-    console.log("student id: ",data,"session id:",sessionId);
+    console.log("data: ",data,"session id:",sessionId);
     
     const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${sessionId}`,

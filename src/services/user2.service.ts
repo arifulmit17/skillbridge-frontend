@@ -39,7 +39,7 @@ getAllUser: async function () {
 
     }
     catch(err){
-        console.log(err);
+        // console.log(err);
         return {data:null,error:{message:"Failed to fetch users"}}
     }
 },

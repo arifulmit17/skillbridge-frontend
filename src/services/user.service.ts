@@ -18,7 +18,7 @@ export const userService={
  return {data:session,error:null}
         }
     catch(err){
-        console.log(err);
+        // console.log(err);
         return {data:null,error:{message:"Failed to fetch session"}}
     }
 },

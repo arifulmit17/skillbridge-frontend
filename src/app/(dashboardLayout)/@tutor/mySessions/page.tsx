@@ -56,9 +56,7 @@ export default async function MySessions() {
     const authorId=tutor?.id;
     const sessionsData=await bookingService?.getAllSessions();
     const sessions=await sessionsData?.data?.json();
-    console?.log(sessions);
     const mySessions=sessions?.filter((session:Session)=>session?.tutorId===authorId);
-    console?.log("My sessions:",mySessions);
   return (
    <div>
   {Array.isArray(mySessions) && mySessions?.length > 0 ? (

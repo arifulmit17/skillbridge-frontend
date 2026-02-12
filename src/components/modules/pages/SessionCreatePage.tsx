@@ -18,11 +18,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { env } from "@/env"
 import { authClient } from "@/lib/auth-client"
+import { toast } from "sonner"
 
 const NEXT_PUBLIC_API_URL=env.NEXT_PUBLIC_API_URL
 
 type AvailabilitySlot = {
   id: string
+  tutorId:string
   dayOfWeek: string
   isAvailable: boolean
   isBooked: boolean
@@ -44,16 +46,16 @@ export function SessionCreatePage({
   slots,
 }: {
   tutorId: string
-  studentId: string
+  studentId?: string
   categories: Category[]
   slots: AvailabilitySlot[]
 
 }) {
     const session=authClient.getSession()
-      console.log(session);
+      // console.log(session);
 
     const availableSlots = slots?.filter(
-  (slot) => slot.isAvailable && !slot.isBooked
+  (slot) => slot.isAvailable && !slot.isBooked && slot.tutorId==tutorId
 ) ?? []
   const [formData, setFormData] = useState({
     categoryId: "",
@@ -88,7 +90,7 @@ export function SessionCreatePage({
       status: formData.status,
     }
 
-    console.log("Booking payload:", payload)
+    // console.log("Booking payload:", payload)
      try{
             const res=await fetch(`${NEXT_PUBLIC_API_URL}/teachingsessions`,{
                 method:"POST",
@@ -99,10 +101,14 @@ export function SessionCreatePage({
                 body:JSON.stringify(payload)
             })
             const data=await res.json()
-            console.log(data);
+            if(res.ok){
+              toast.success("Session is created")
+            }else{
+              toast.error("Session creation failed")
+            }
         }
         catch(err){
-            console.log(err);
+            toast.error(err);
             return {data:null,error:{message:"Failed to create session"}}
         }
   }

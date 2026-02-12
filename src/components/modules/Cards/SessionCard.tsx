@@ -12,6 +12,8 @@ import BookingButton from "../shared/BookingButton"
 import { tutorService } from "@/services/tutor.service"
 import ReviewInput from "../shared/ReviewInput"
 import { availabilityService } from "@/services/availability.service"
+import { Button } from "@/components/ui/button"
+import CancelBooking from "../shared/CancelBooking"
 
 type User = {
   id: string
@@ -55,7 +57,6 @@ type Session = {
 
 
 
-
 export async function  SessionCard({ session }: { session: Session }) {
   // console?.log(session);
   const tutorId=session?.tutor?.userId
@@ -66,16 +67,18 @@ export async function  SessionCard({ session }: { session: Session }) {
    const tutorName=tutorData?.data?.user?.name
   const start = session?.startTime
   const end =session?.endTime
-  const sessionID=session?.studentId
+  const sessionStudentID=session?.studentId
       const { data} = await userService?.getSession();
        
     const role= data?.user?.role
     const userId=data?.user?.id
     const userName=data?.user?.name
     let booked=false
+    
+    
     // const {data?:teachingSession}=await bookingService?.getAllSessions()
     //  const teaching=await teachingSession?.json()
-    if(userId==sessionID){
+    if(userId==sessionStudentID){
        booked=true
     }
   // const durationHours =
@@ -114,15 +117,15 @@ export async function  SessionCard({ session }: { session: Session }) {
         </div>
 
         
-         {userId==sessionID && <h1>Session is Booked by {userName}</h1>}
+         {userId==sessionStudentID && <h1>Session is Booked by {userName}</h1>}
         <div className="lg:flex flex-col gap-2 pt-3">
             {role=="admin" && <DeleteButton sessionId={session?.id}></DeleteButton>}
           {session?.status === "PENDING" && (
             <>
-              <DeleteButton sessionId={session?.id}></DeleteButton> 
-             {!booked && <BookingButton studentId={data?.user?.id} sessionId={session?.id}></BookingButton>} 
+              <CancelBooking slotId={session?.availabilitySlotId} sessionId={session?.id} ></CancelBooking>
+             {!booked && <BookingButton studentId={data?.user?.id} sessionId={session?.id} slotId={session?.availabilitySlotId}></BookingButton>} 
               
-              <CompleteButton sessionId={session?.id}></CompleteButton>
+             {booked && <CompleteButton sessionId={session?.id}></CompleteButton>} 
             </>
           )}
           {session?.status==="COMPLETED" && <div>

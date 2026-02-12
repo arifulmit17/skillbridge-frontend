@@ -35,7 +35,7 @@ export default function ReviewInput({
   comment,
 }
 
-console.log("Sending review payload:", payload)
+// console.log("Sending review payload:", payload)
 
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews`, {
         method: "POST",

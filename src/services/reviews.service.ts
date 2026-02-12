@@ -16,7 +16,7 @@ export const reviewsService = {
         if (params?.tutorId) {
             url.searchParams.append('id', params.tutorId);
           }
-          console.log(url);
+        //   console.log(url);
         const data=await fetch(url.toString(),{
              credentials: "include",
             cache:'no-store'

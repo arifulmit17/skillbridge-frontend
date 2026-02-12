@@ -16,6 +16,23 @@ export const categoriesService = {
        return {data:data,error:null}
     },
 
+    getCategoryById : async function(id:string){
+    try{
+         
+         const res=await fetch(`${API_URL}/categories/${id}`,{
+            credentials: "include",
+         })
+         const data=await res.json()
+//  console.log("Home page session:",session);
+ return {data:data,error:null}
+    }
+    catch(err){
+        // console.log(err);
+        return {data:null,error:{message:"Failed to fetch category by ID"}}
+    }
+},
+    
+
     deleteCategory: async (categoryId: string) => {
        
     const res = await fetch(

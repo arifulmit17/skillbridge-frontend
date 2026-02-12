@@ -22,19 +22,17 @@ export default async function CreateSessionPage() {
         const {data:slot}=await availabilityService?.getAllSlots();
             const categoryList=await category?.json();
             const slotList=await slot?.json()
-            const studentid="uvDEjuFHNU2cW4EIw9hD9LAQNGkgVwqt";
+            //  const studentid="uvDEjuFHNU2cW4EIw9hD9LAQNGkgVwqt";
             // console.log(slotList);
   return (
     <div>
   {slotList?.data &&
   tutor?.id &&
-  studentid &&
   Array.isArray(categoryList) &&
   categoryList?.length > 0 ? (
     <SessionCreatePage
       slots={slotList?.data}
       tutorId={tutor?.id}
-      studentId={studentid}
       categories={categoryList}
     />
   ) : (

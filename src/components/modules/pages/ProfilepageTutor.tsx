@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { env } from "@/env"
+import { toast } from "sonner"
 
 const NEXT_PUBLIC_API_URL=env.NEXT_PUBLIC_API_URL
 
@@ -62,7 +63,7 @@ export  function ProfilepageTutor({
       ...formData,
     }
 
-    console.log("Tutor profile payload:", payload)
+    // console.log("Tutor profile payload:", payload)
 
     try{
             const res=await fetch(`${NEXT_PUBLIC_API_URL}/tutors`,{
@@ -73,11 +74,14 @@ export  function ProfilepageTutor({
                 credentials: "include",
                 body:JSON.stringify(payload)
             })
+            if(res.ok){
+              toast.success("Tutor profile created successfully")
+            }
             const data=await res.json()
             return {data:data,error:null}
         }
         catch(err){
-            console.log(err);
+            toast.error(err);
             return {data:null,error:{message:"Failed to create tutor"}}
         }
      

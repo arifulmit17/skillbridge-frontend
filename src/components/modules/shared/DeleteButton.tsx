@@ -5,13 +5,14 @@ import React from 'react'
 import { toast } from 'sonner';
 
 const handleDelete=async  (sessionId:string)=>{
- toast(`Updating user with ID: ${sessionId}` );
+  console.log(sessionId);
+ toast(`Deleting session with ID: ${sessionId}` );
   // Implement deletion logic here
-  const data =await bookingService.deleteSession(sessionId)
-   if(data.data){
+  const res =await bookingService.deleteSession(sessionId)
+   if(res.data){
     toast.success("session deleted successfully");
    }
-    if(data.error){
+    if(res.error){
       toast.error("Failed to delete session:", data.error);
     }
 }

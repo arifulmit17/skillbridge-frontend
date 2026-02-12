@@ -36,7 +36,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
         </div>
 
         {/* Footer */}
-        <div className="w-1/3 flex flex-col lg:flex-row justify-between">
+        <div className="w-1/3 flex flex-col lg:flex-row gap-2 justify-between">
         <Link href={`/categories/${category?.id}`}><Button>update</Button></Link>
         <DeleteCategoryButton categoryId={category?.id}></DeleteCategoryButton>
         </div>

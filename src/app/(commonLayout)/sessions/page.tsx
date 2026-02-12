@@ -47,6 +47,7 @@ export default async function SessionPage() {
 
     const {data}=await bookingService?.getAllSessions()
     const sessionData=await data?.json()
+    console.log(sessionData);
     
   return (
    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">

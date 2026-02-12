@@ -36,7 +36,7 @@ export const tutorService={
  return {data:data,error:null}
         }
     catch(err){
-        console.log(err);
+        // console.log(err);
         return {data:null,error:{message:"Failed to fetch tutor data"}}
     }
 },
@@ -52,7 +52,7 @@ getTutorById : async function(id:string){
  return {data:data,error:null}
     }
     catch(err){
-        console.log(err);
+        // console.log(err);
         return {data:null,error:{message:"Failed to fetch tutor by ID"}}
     }
 },
@@ -66,8 +66,6 @@ getTutorByUserId : async function(id:string){
          })
         
          if (!res.ok) {
-  const text = await res.text()
-  console.error("Non-JSON response:", text)
   throw new Error(`Request failed with status ${res.status}`)
 }
          const data=await res.json()
@@ -76,7 +74,7 @@ getTutorByUserId : async function(id:string){
  return {data:data,error:null}
     }
     catch(err){
-        console.log(err);
+        // console.log(err);
         return {data:null,error:{message:"Failed to fetch tutor by user ID"}}
     }
 }

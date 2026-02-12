@@ -51,11 +51,7 @@ export default function ReviewPage({ review }: { review: Review }) {
           “{review.comment}”
         </p>
 
-        {/* Footer */}
-        <div className="mt-8 flex justify-between text-xs text-muted-foreground">
-          <span>Review ID: {review.id}</span>
-          <span>Tutor ID: {review.tutorId}</span>
-        </div>
+        
       </div>
     </div>
   )

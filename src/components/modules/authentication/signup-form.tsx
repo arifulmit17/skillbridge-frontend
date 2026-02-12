@@ -68,7 +68,7 @@ if (!result.success) {
 }
 
 
-    console.log("Signup payload:", payload)
+    // console.log("Signup payload:", payload)
     try {
       const { data, error } = await authClient.signUp.email(payload)
       if(data){

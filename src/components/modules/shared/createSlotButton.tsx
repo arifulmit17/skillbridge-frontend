@@ -40,7 +40,7 @@ export default function CreateSlotButton({ tutorId }: { tutorId: string }) {
       toast.success("Availability added successfully",{ position: "top-center" })
       setDayOfWeek("")
     } catch (err) {
-      console.error(err)
+      // console.error(err)
       toast.error("Something went wrong",{ position: "top-center" })
     } finally {
       setLoading(false)

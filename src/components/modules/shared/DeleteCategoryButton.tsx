@@ -20,7 +20,7 @@ export default function DeleteCategoryButton({ categoryId }: { categoryId: strin
       toast.success("Category deleted successfully")
       router.refresh()
     } catch (error) {
-      console.error(error)
+      // console.error(error)
       toast.error("Failed to delete category")
     }
   }
