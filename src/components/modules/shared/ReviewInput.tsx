@@ -10,13 +10,16 @@ import { toast } from "sonner"
 export default function ReviewInput({
   tutorId,
   userId,
+  
 }: {
   tutorId: string
   userId: string
+  
 }) {
   const [rating, setRating] = useState("")
   const [comment, setComment] = useState("")
   const [loading, setLoading] = useState(false)
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,11 +52,13 @@ export default function ReviewInput({
       if (!res.ok) {
         const err = await res.json().catch(() => null)
         throw new Error(err?.message || "Failed to submit review")
+      }else{
+       toast.success("Review submitted successfully")
       }
 
       setRating("")
       setComment("")
-      toast.success("Review submitted successfully")
+      
     } catch (err: unknown) {
   if (err instanceof Error) {
     toast.error(err.message)

@@ -1,3 +1,5 @@
+import { tutorService } from "@/services/tutor.service"
+import { userService2 } from "@/services/user2.service"
 import React from "react"
 
 type Review = {
@@ -9,10 +11,15 @@ type Review = {
   createdAt: string
 }
 
-export default function ReviewCard({ review }: { review: Review }) {
+export default async function ReviewCard({ review }: { review: Review }) {
+  const {data:tutor}=await tutorService.getTutorById(review.tutorId);
+  const TutorName=tutor.user.name
+   const {data:student}=await userService2.getAllUser()
+    const studentInfo=student.filter(user=>user.id==review.userId)
   return (
     <div className="rounded-xl border bg-white p-5 shadow-sm space-y-3">
-      
+      <div><h1>Review for teacher {TutorName}</h1></div>
+      <div><h1>Review given by student {studentInfo[0].name}</h1></div>
       {/* Rating */}
       <div className="flex items-center gap-2">
         <span className="text-yellow-500 text-lg">

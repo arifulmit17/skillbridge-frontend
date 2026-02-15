@@ -1,3 +1,4 @@
+import { userService2 } from "@/services/user2.service"
 import { Star } from "lucide-react"
 
 type Review = {
@@ -26,13 +27,18 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 
-export default function ReviewPage({ review }: { review: Review }) {
+export default async function ReviewPage({ review }: { review: Review }) {
+  const {data}=await userService2.getAllUser()
+  const student=data.filter(user=>user.id==review.userId)
+
+ 
+
   return (
     <div className="max-h-screen bg-muted/30 px-6 py-5">
       <div className="mx-auto max-w-2xl rounded-2xl bg-white border p-8 shadow-sm">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Student Review</h1>
+          <h1 className="text-2xl font-semibold"> Review given by student {student[0].name}</h1>
           <span className="text-sm text-muted-foreground">
             {new Date(review.createdAt).toDateString()}
           </span>

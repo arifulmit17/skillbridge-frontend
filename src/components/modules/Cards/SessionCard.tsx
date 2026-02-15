@@ -81,6 +81,7 @@ export async function  SessionCard({ session }: { session: Session }) {
     if(userId==sessionStudentID){
        booked=true
     }
+    
   // const durationHours =
   //   (end - start) / (1000 * 60 * 60)
 
@@ -128,9 +129,11 @@ export async function  SessionCard({ session }: { session: Session }) {
              {booked && <CompleteButton sessionId={session?.id}></CompleteButton>} 
             </>
           )}
-          {session?.status==="COMPLETED" && <div>
+          {session?.status==="COMPLETED" && userId==sessionStudentID &&<div>
             <h1>Give your review</h1>
-            <ReviewInput tutorId={session?.tutorId} userId={data?.user?.id}></ReviewInput>
+            
+            <ReviewInput  tutorId={session?.tutorId} userId={data?.user?.id}></ReviewInput>
+            
             </div>} 
         </div>
       </CardContent>

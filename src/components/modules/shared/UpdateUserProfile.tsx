@@ -13,8 +13,8 @@ const handleUpdate = async (
   toast(`Updating user with ID: ${userId}` )
 
   const data = await userService2.updateUser(userId, userdata)
-
-  if (data.data) {
+  console.log(data);
+  if (data) {
     toast.success("User updated successfully")
   }
 
@@ -38,7 +38,8 @@ if (name.trim()) {
 payload.emailVerified = emailVerified
 
 
-    await handleUpdate(userId, payload)
+    const res= await handleUpdate(userId, payload)
+    
   }
 
   return (
