@@ -6,7 +6,7 @@ import { UpdateSlotData } from '@/types/slot.type';
 import { toast } from 'sonner';
 
 const handleUpdate=async  (slotId:string,data:UpdateSlotData,sessionId:string)=>{
-  console.log(slotId,data);
+//   console.log(slotId,data);
  toast(`Updating slot with ID: ${slotId}` );
   // Implement deletion logic here
   const res =await availabilityService.updateSlot(slotId,data)

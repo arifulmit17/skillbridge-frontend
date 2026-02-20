@@ -5,7 +5,7 @@ import React from 'react'
 import { toast } from 'sonner';
 
 const handleDelete=async  (sessionId:string)=>{
-  console.log(sessionId);
+  // console.log(sessionId);
  toast(`Deleting session with ID: ${sessionId}` );
   // Implement deletion logic here
   const res =await bookingService.deleteSession(sessionId)

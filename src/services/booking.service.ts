@@ -13,7 +13,7 @@ export const bookingService={
        return {data:data,error:null}
     },
     deleteSession: async function (id:string) { 
-      console.log(id);     
+      // console.log(id);     
         try{
             const data=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${id}`,{
              credentials: "include",
@@ -29,7 +29,7 @@ export const bookingService={
 
 
 updateSession: async function (sessionId:string,data:UpdateSessionData ) {
-    console.log("data: ",data,"session id:",sessionId);
+    // console.log("data: ",data,"session id:",sessionId);
     
     const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/teachingsessions/${sessionId}`,

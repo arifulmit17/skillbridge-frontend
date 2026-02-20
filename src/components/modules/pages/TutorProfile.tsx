@@ -1,5 +1,6 @@
 import Link from "next/link"
 import UpdateUserProfile from "../shared/UpdateUserProfile"
+import { userService } from "@/services/user.service"
 
 
 
@@ -79,7 +80,9 @@ export default async function TutorProfilePage({
   userId?: string
 }) {
     
-       
+      const {data:user}=await userService.getSession()
+      // console.log(user.user.name,tutor.user.name);
+
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Hero Section */}
@@ -140,15 +143,14 @@ export default async function TutorProfilePage({
         <div className="space-y-6">
           <Card title="Contact Information">
             <InfoRow label="Email" value={tutor.user.email} />
-            <InfoRow label="Role" value={tutor.user.role} />
-            <InfoRow label="Account Status" value={tutor.user.status} />
+            <InfoRow label="Account Status" value={tutor.status} />
           </Card>
 
-          <div className="rounded-2xl border bg-white p-6">
+         {user.user.name==tutor.user.name && <div className="rounded-2xl border bg-white p-6">
                
               <UpdateUserProfile userId={userId}></UpdateUserProfile>
            
-          </div>
+          </div>}
         </div>
       </section>
     </div>

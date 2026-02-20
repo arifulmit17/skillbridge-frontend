@@ -9,7 +9,7 @@ interface GetReviewParams{
 
 export const reviewsService = {
     getReviewsByTutorId: async function (params?: GetReviewParams) {
-        console.log(params?.tutorId);
+        // console.log(params?.tutorId);
         
         const url= new URL(`${API_URL}/reviews/tutor/`);
         

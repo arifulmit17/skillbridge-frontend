@@ -58,8 +58,9 @@ const Footer2 = ({
         <footer >
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
-              <div className="flex items-center gap-2 lg:justify-start">
+              <div className="flex flex-col items-start gap-2 lg:justify-start">
                 <h1>Skill bridge</h1>
+                 <p>{copyright}</p>
               </div>
               
             </div>
@@ -79,10 +80,7 @@ const Footer2 = ({
               </div>
             ))}
           </div>
-          <div className="mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
-            <p>{copyright}</p>
-            
-          </div>
+          
         </footer>
       </div>
     </section>

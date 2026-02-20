@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(request: NextRequest) {
+  
   const pathname = request.nextUrl.pathname;
-
-  // Skip middleware for verify-email route
-  if (pathname.startsWith("/verify-email")) {
-    return NextResponse.next();
-  }
+  console.log("hello proxy:",pathname);
+  // // Skip middleware for verify-email route
+  // if (pathname.startsWith("/verify-email")) {
+  //   return NextResponse.next();
+  // }
 
   // Check for session token in cookies
   const sessionToken = request.cookies.get("better-auth.session_token");
+  console.log(sessionToken);
 
   //* User is not authenticated at all
   if (!sessionToken) {
@@ -21,5 +23,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/admin-dashboard/:path*"],
+  matcher: ["/dashboard","/dashboard/:path*", "/admin-dashboard/:path*"],
 };
