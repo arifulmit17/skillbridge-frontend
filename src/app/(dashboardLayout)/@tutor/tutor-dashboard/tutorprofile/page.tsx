@@ -11,13 +11,14 @@ export default   async function profile() {
     const {data:user}=await userService?.getSession()
     const  myId=user?.session?.userId;
     const {data:tutor}=await tutorService?.getTutorByUserId(myId);
-    
+    const tutorres=tutor.data
+     console.log(tutorres);
     const {data:category}=await categoriesService?.getAllCategories();
     const categoryList=await category?.json();
-    // console.log(categoryList);
+    
   return (
     <div>
-         {tutor ? <TutorProfile userId={myId} tutor={tutor}></TutorProfile>:
+         {tutor ? <TutorProfile userId={myId} tutor={tutorres}></TutorProfile>:
         <ProfilepageTutor userId={myId} categories={categoryList}></ProfilepageTutor>}
         
         

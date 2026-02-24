@@ -4,7 +4,7 @@ import { Route } from "@/types/routes.type";
 
 export const adminRoutes: Route[] = [
   {
-    title: "User Management",
+    title: "Admin Dashboard",
     items: [
       {
         title: "Home",
@@ -12,19 +12,19 @@ export const adminRoutes: Route[] = [
       },
       {
         title: "All Sessions",
-        url: "/allSession",
+        url: "/admin-dashboard/allSession",
       },
       {
         title: "All Tutors",
-        url: "/allTutor",
+        url: "/admin-dashboard/allTutor",
       },
       {
         title: "All Users",
-        url: "/allUser",
+        url: "/admin-dashboard/allUser",
       },
       {
         title: "Categories",
-        url: "/categories",
+        url: "/admin-dashboard/categories",
       },
     ],
   },

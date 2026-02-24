@@ -92,51 +92,94 @@ export async function  SessionCard({ session }: { session: Session }) {
   }[session?.status]
 
   return (
-    <Card className="max-w-md">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-lg">Tutoring Session by {tutorName}</CardTitle>
+    <Card className="max-w-md rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
 
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-medium ${statusColor}`}
-        >
-          {session?.status}
-        </span>
-      </CardHeader>
+  <CardHeader className="flex flex-row items-center justify-between px-5 py-4 border-b">
+    <CardTitle className="text-lg font-semibold text-gray-900">
+      Tutoring Session by {tutorName}
+    </CardTitle>
 
-      <CardContent className="space-y-3 text-sm">
-        <div>
-          <p>Session date: Today</p>
-        </div>
-        <div>
-          <p className="text-muted-foreground">Start</p>
-          <p>{start?.toLocaleString()}</p>
-        </div>
-        
-        <div>
-          <p className="text-muted-foreground">End</p>
-          <p>{end?.toLocaleString()}</p>
-        </div>
+    <span
+      className={`rounded-full px-3 py-1 text-xs font-medium border ${statusColor}`}
+    >
+      {session?.status}
+    </span>
+  </CardHeader>
 
-        
-         {userId==sessionStudentID && <h1>Session is Booked by {userName}</h1>}
-        <div className="lg:flex flex-col gap-2 pt-3">
-            {role=="admin" && <DeleteButton sessionId={session?.id}></DeleteButton>}
-          {session?.status === "PENDING" && (
-            <>
-              <CancelBooking slotId={session?.availabilitySlotId} sessionId={session?.id} ></CancelBooking>
-             {!booked && <BookingButton studentId={data?.user?.id} sessionId={session?.id} slotId={session?.availabilitySlotId}></BookingButton>} 
-              
-             {booked && <CompleteButton sessionId={session?.id}></CompleteButton>} 
-            </>
+  <CardContent className="px-5 py-5 space-y-4 text-sm text-gray-700">
+
+    <div className="space-y-1">
+      <p className="text-xs uppercase tracking-wide text-gray-500">
+        Session date
+      </p>
+      <p className="font-medium">Today</p>
+    </div>
+
+    <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-1">
+        <p className="text-xs uppercase tracking-wide text-gray-500">
+          Start
+        </p>
+        <p className="font-medium">{start?.toLocaleString()}</p>
+      </div>
+
+      <div className="space-y-1">
+        <p className="text-xs uppercase tracking-wide text-gray-500">
+          End
+        </p>
+        <p className="font-medium">{end?.toLocaleString()}</p>
+      </div>
+    </div>
+
+    {userId == sessionStudentID && (
+      <div className="text-xs font-medium border rounded-lg px-3 py-2">
+        Session booked by {userName}
+      </div>
+    )}
+
+    <div className="flex flex-col gap-3 pt-4 border-t">
+
+      {role == "admin" && (
+        <DeleteButton sessionId={session?.id} />
+      )}
+
+      {session?.status === "PENDING" && (
+        <>
+          <CancelBooking
+            slotId={session?.availabilitySlotId}
+            sessionId={session?.id}
+          />
+
+          {!booked && (
+            <BookingButton
+              studentId={data?.user?.id}
+              sessionId={session?.id}
+              slotId={session?.availabilitySlotId}
+            />
           )}
-          {session?.status==="COMPLETED" && userId==sessionStudentID &&<div>
-            <h1>Give your review</h1>
-            
-            <ReviewInput  tutorId={session?.tutorId} userId={data?.user?.id}></ReviewInput>
-            
-            </div>} 
-        </div>
-      </CardContent>
-    </Card>
+
+          {booked && (
+            <CompleteButton sessionId={session?.id} />
+          )}
+        </>
+      )}
+
+      {session?.status === "COMPLETED" &&
+        userId == sessionStudentID && (
+          <div className="border rounded-lg p-4">
+            <h1 className="font-semibold mb-2 text-sm">
+              Give your review
+            </h1>
+            <ReviewInput
+              tutorId={session?.tutorId}
+              userId={data?.user?.id}
+            />
+          </div>
+        )}
+    </div>
+
+  </CardContent>
+</Card>
+
   )
 }

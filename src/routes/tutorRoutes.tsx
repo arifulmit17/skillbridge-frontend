@@ -12,23 +12,23 @@ export const tutorRoutes: Route[] = [
       },
       {
         title: "My Profile",
-        url: "/tutorprofile",
+        url: "/tutor-dashboard/tutorprofile",
       },
       {
         title: "My Availability",
-        url: "/availability",
+        url: "/tutor-dashboard/availability",
       },
       {
         title: "Arrange Sessions",
-        url: "/createSession",
+        url: "/tutor-dashboard/createSession",
       },
       {
         title: "My Sessions",
-        url: "/mySessions",
+        url: "/tutor-dashboard/mySessions",
       },
       {
         title: "Student's Reviews",
-        url: "/tutorReviews",
+        url: "/tutor-dashboard/tutorReviews",
       },
     ],
   },

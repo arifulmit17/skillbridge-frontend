@@ -19,9 +19,18 @@ export default async function Availability() {
   const { data: user } = await userService?.getSession()
   const myId = user?.session?.userId
   const {data:tutor}=await tutorService?.getTutorByUserId(myId);
+  // console.log("tutor is here ",tutor.data.id);
+  const slots=slotdata?.data
+// const mySlots=slots.filter((slot: AvailabilitySlot)=>slot?.tutorId===tutor?.id);
 
-  
-const mySlots=slotdata?.data?.filter((slot: AvailabilitySlot)=>slot?.tutorId===tutor?.id);
+const mySlots = slots.filter((slot: AvailabilitySlot) => {
+  // console.log("checking slot:", slot);
+  // console.log("slot.tutorId:", slot?.tutorId);
+  // console.log("tutor.id:", tutor?.data.id);
+  return slot?.tutorId === tutor?.data.id;
+});
+
+console.log(slots);
   return (
     <div className="w-11/12 mx-auto flex flex-col gap-6">
       

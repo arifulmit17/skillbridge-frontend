@@ -12,11 +12,11 @@ export const studentRoutes: Route[] = [
       },
       {
         title: "My Booked Sessions",
-        url: "/myBookings",
+        url: "/dashboard/myBookings",
       },
       {
         title: "My Reviews",
-        url: "/myReviews",
+        url: "/dashboard/myReviews",
       },
     ],
   },

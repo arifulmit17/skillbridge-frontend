@@ -17,22 +17,25 @@ type User = {
 export default async function CreateSessionPage() {
     const {data:user}=await userService?.getSession()
         const  myId=user?.session?.userId;
+        
         const {data:tutor}=await tutorService?.getTutorByUserId(myId);
+        
         const {data:category}=await categoriesService?.getAllCategories();
         const {data:slot}=await availabilityService?.getAllSlots();
+       
             const categoryList=await category?.json();
             const slotList=await slot?.json()
             //  const studentid="uvDEjuFHNU2cW4EIw9hD9LAQNGkgVwqt";
-            // console.log(slotList);
+            console.log(slotList);
   return (
     <div>
   {slotList?.data &&
-  tutor?.id &&
+  tutor?.data.id &&
   Array.isArray(categoryList) &&
   categoryList?.length > 0 ? (
     <SessionCreatePage
       slots={slotList?.data}
-      tutorId={tutor?.id}
+      tutorId={tutor?.data.id}
       categories={categoryList}
     />
   ) : (

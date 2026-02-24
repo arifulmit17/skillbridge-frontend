@@ -33,7 +33,7 @@ const [tutors, setTutors] = useState<Tutor[]>([])
 const [selectedCategory, setSelectedCategory] = useState<string>("all")
 
   const categories = Array.from(
-  new Set(allTutors.map((t) => t.category?.name).filter(Boolean))
+  new Set(allTutors?.map((t) => t.category?.name).filter(Boolean))
 )
 
   // console.log(tutors);
@@ -60,7 +60,7 @@ const [selectedCategory, setSelectedCategory] = useState<string>("all")
         setTutors(allTutors)
       } else {
         setTutors(
-          allTutors.filter(
+          allTutors?.filter(
             (tutor) => tutor.category?.name === value
           )
         )
@@ -79,7 +79,7 @@ const [selectedCategory, setSelectedCategory] = useState<string>("all")
 
         <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
   {tutors.length > 0 ? (
-    tutors.map((tutor) => (
+    tutors?.map((tutor) => (
       <TutorCard key={tutor.id} tutor={tutor} />
     ))
   ) : (

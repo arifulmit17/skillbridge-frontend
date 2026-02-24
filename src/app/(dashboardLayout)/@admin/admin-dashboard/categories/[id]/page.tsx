@@ -71,7 +71,7 @@ export default function CategoryUpdatePage() {
       }
 
       toast.success("Category updated successfully")
-      router.push("/categories")
+      router.push("/admin-dashboard/categories")
     } catch (err: any) {
       setError(err.message)
     } finally {
