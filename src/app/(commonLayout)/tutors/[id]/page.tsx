@@ -5,6 +5,7 @@ import React from 'react'
 export default async function Tutorpage({ params }: { params: Promise<{ id: string }> }) {
     const {id}=await params
     const data=await tutorService.getTutorById(id)
+    console.log(data);
     
   return (
     <div>

@@ -20,7 +20,7 @@ export const availabilityService={
     },
 
    updateSlot: async function (slotId:string,data:UpdateSlotData ) {
-       console.log("data: ",data,"session id:",slotId);
+    //    console.log("data: ",data,"session id:",slotId);
        
        const res = await fetch(
        `${process.env.NEXT_PUBLIC_API_URL}/slots/${slotId}`,

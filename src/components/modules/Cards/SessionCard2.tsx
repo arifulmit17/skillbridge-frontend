@@ -7,6 +7,9 @@ import {
 
 import { userService } from "@/services/user.service"
 import { tutorService } from "@/services/tutor.service"
+import BookingButton from "../shared/BookingButton"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 
 type User = {
@@ -57,7 +60,8 @@ export async function  SessionCard2({ session }: { session: Session }) {
   
  
    const tutorData=await tutorService?.getTutorByUserId(tutorId)
-   const tutorName=tutorData?.data?.user?.name
+   const tutorName=tutorData?.data?.data?.user?.name
+  //  console.log(tutorData);
    
   const start = session?.startTime
   const end = session?.endTime
@@ -105,7 +109,12 @@ export async function  SessionCard2({ session }: { session: Session }) {
         </div>
 
         
-         { <h1>Session is Booked by {userName}</h1>}
+         {userName ? <h1>Session is Booked by {userName}</h1>: <h1>Session is not booked yet</h1>}
+         {!booked && role==="student" && <BookingButton
+                       studentId={data?.user?.id}
+                       sessionId={session?.id}
+                       slotId={session?.availabilitySlotId}
+                     />}
         
       </CardContent>
     </Card>

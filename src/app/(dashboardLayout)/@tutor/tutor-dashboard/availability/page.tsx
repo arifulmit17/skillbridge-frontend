@@ -15,22 +15,23 @@ type AvailabilitySlot = {
 
 export default async function Availability() {
   const { data } = await availabilityService?.getAllSlots()
-  const slotdata = await data?.json()
+  const slots = await data?.json()
+  // console.log(slots);
   const { data: user } = await userService?.getSession()
   const myId = user?.session?.userId
   const {data:tutor}=await tutorService?.getTutorByUserId(myId);
   // console.log("tutor is here ",tutor.data.id);
-  const slots=slotdata?.data
+  
 // const mySlots=slots.filter((slot: AvailabilitySlot)=>slot?.tutorId===tutor?.id);
 
-const mySlots = slots.filter((slot: AvailabilitySlot) => {
+const mySlots = slots?.data.filter((slot: AvailabilitySlot) => {
   // console.log("checking slot:", slot);
   // console.log("slot.tutorId:", slot?.tutorId);
-  // console.log("tutor.id:", tutor?.data.id);
-  return slot?.tutorId === tutor?.data.id;
+  // console.log("tutor.id:", tutor?.id);
+  return slot?.tutorId === tutor?.id;
 });
 
-console.log(slots);
+// console.log(slots);
   return (
     <div className="w-11/12 mx-auto flex flex-col gap-6">
       

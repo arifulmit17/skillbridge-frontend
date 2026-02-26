@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { useEffect, useState } from "react";
 
 interface MenuItem {
   title: string;
@@ -91,10 +92,7 @@ const Navbar1 = ({
       url: "/sessions",
      
     },
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-    },
+    
     
   ],
   auth = {
@@ -103,8 +101,34 @@ const Navbar1 = ({
   },
   className,
 }: Navbar1Props) => {
+  const [session, setSession] = useState<any>(null);
+const [loading, setLoading] = useState(true);
 
-  const {session}= authClient.getSession()
+const role = session?.user?.role;
+
+useEffect(() => {
+  const fetchSession = async () => {
+    const { data } = await authClient.getSession();
+    console.log("Session data:", data);
+    setSession(data);
+    setLoading(false);
+  };
+
+  fetchSession();
+}, []);
+
+let dashboardItem: MenuItem | null = null;
+
+if (role === "tutor") {
+  dashboardItem = { title: "Dashboard", url: "/tutor-dashboard" };
+} else if (role === "student") {
+  dashboardItem = { title: "Dashboard", url: "/dashboard" };
+} else if (role === "admin") {
+  dashboardItem = { title: "Dashboard", url: "/admin-dashboard" };
+}
+ const finalMenu = dashboardItem ? [...menu, dashboardItem] : menu;
+  // const session= authClient.getSession()
+  // console.log(session);
   return (
     <section className={cn("py-4", className)}>
       <div className="container mx-auto px-4">
@@ -121,13 +145,13 @@ const Navbar1 = ({
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {menu.map((item) => renderMenuItem(item))}
+                  {finalMenu.map((item) => renderMenuItem(item))}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
           </div>
           <div className="flex gap-2">
-           {session ? <Button asChild variant="outline" size="sm">
+           {!session ? <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>:
             <Button asChild variant="outline" size="sm">
@@ -161,16 +185,19 @@ const Navbar1 = ({
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menu.map((item) => renderMobileMenuItem(item))}
+                    {finalMenu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
-                    </Button>
-                    <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
-                    </Button>
+                   {!session ? <Button asChild variant="outline" size="sm">
+              <a href={auth.login.url}>{auth.login.title}</a>
+            </Button>:
+            <Button asChild variant="outline" size="sm">
+              <div onClick={handleLogout}>Logout</div>
+            </Button>}
+            <Button asChild size="sm">
+              <a href={auth.signup.url}>{auth.signup.title}</a>
+            </Button>
                   </div>
                 </div>
               </SheetContent>

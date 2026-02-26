@@ -14,24 +14,24 @@ type Review = {
 export default async function TutorReviewsPage() {
     const {data:user}=await userService?.getSession()
     const tutor=await tutorService?.getTutorByUserId(user?.session?.userId)
-    console.log(tutor);
+    // console.log(tutor);
     const reviews=await reviewsService?.getAllReviews()
     
     const data=await reviews?.data?.json();
-    console.log(data);
+    // console.log(data);
     // const filteredReviews=data?.filter((review:Review)=>review?.tutorId===tutor?.data?.id)
     const filteredReviews = data?.filter((review: Review) => {
-  console.log("Review object:", review);
-  console.log("review.tutorId:", review?.tutorId);
-  console.log("tutor.data.id:", tutor?.data.data.id);
-  console.log(
-    "Match?",
-    review?.tutorId === tutor?.data?.id
-  );
+  // console.log("Review object:", review);
+  // console.log("review.tutorId:", review?.tutorId);
+  // console.log("tutor.data.id:", tutor?.data.id);
+  // console.log(
+  //   "Match?",
+  //   review?.tutorId === tutor?.data?.id
+  // );
 
-  return review?.tutorId === tutor?.data.data?.id;
+  return review?.tutorId === tutor?.data?.id;
 });
-    console.log(filteredReviews);
+    // console.log(filteredReviews);
     
   return (
     <div>

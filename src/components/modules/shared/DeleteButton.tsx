@@ -21,7 +21,7 @@ export default function DeleteButton({ sessionId }: { sessionId: string }) {
   return (
     <div>
         <Button onClick={()=>handleDelete(sessionId)} size="sm" variant="outline">
-                Cancel
+                Delete
               </Button>
     </div>
   )

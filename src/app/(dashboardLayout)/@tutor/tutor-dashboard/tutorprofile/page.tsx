@@ -11,8 +11,8 @@ export default   async function profile() {
     const {data:user}=await userService?.getSession()
     const  myId=user?.session?.userId;
     const {data:tutor}=await tutorService?.getTutorByUserId(myId);
-    const tutorres=tutor.data
-     console.log(tutorres);
+    const tutorres=tutor
+    //  console.log(tutorres);
     const {data:category}=await categoriesService?.getAllCategories();
     const categoryList=await category?.json();
     

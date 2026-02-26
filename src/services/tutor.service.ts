@@ -50,7 +50,7 @@ getTutorById : async function(id:string){
          const data=await res.json()
         //  console.log(data);
 //  console.log("Home page session:",session);
- return {data:data.data,error:null}
+ return {data:data,error:null}
     }
     catch(err){
         // console.log(err);
