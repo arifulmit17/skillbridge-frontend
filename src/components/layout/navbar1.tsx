@@ -32,6 +32,7 @@ import { useEffect, useState } from "react";
 import { ModeToggle } from "../modules/shared/ModeToggle";
 import logo from "../logo.png";
 import Image from "next/image";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 
 interface MenuItem {
   title: string;
@@ -140,7 +141,7 @@ if (role === "tutor") {
   dashboardItem = { title: "Dashboard", url: "/admin-dashboard" };
 }
  const finalMenu = dashboardItem ? [...menu, dashboardItem] : menu;
-  // const session= authClient.getSession()
+ 
   // console.log(session);
   return (
     <section className={cn("py-4 top-0 z-50 sticky bg-background/50 backdrop-blur-lg border-b border-border/50", className)}>
@@ -154,7 +155,7 @@ if (role === "tutor") {
                 <Image width={50} height={10} src={logo.src} alt={logo.alt} className={logo.className} />
              
             </Link>
-            <span className="text-lg text-blue-600 font-semibold tracking-tighter">
+            <span className="text-sm text-blue-600 font-semibold tracking-tighter">
               {logo.title}
             </span>
 
@@ -170,13 +171,36 @@ if (role === "tutor") {
             </div>
           </div>
           <div className="flex gap-2">
-            <ModeToggle></ModeToggle>
-           {!session ? <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.title}</a>
-            </Button>:
-            <Button asChild variant="outline" size="sm">
+             {session && (
+  <DropdownMenu>
+    <DropdownMenuTrigger>
+      <div className="px-3 py-1 text-sm rounded-full bg-secondary text-secondary-foreground cursor-pointer">
+        {session.user.name}
+      </div>
+    </DropdownMenuTrigger>
+
+    <DropdownMenuContent>
+      
+      <DropdownMenuItem asChild>
+        <Link href="/profile">Profile</Link>
+      </DropdownMenuItem>
+
+      <DropdownMenuItem asChild>
+        
               <div onClick={handleLogout}>Logout</div>
+            
+      </DropdownMenuItem>
+
+    </DropdownMenuContent>
+  </DropdownMenu>
+)}
+            <ModeToggle></ModeToggle>
+           {!session && <Button asChild variant="outline" size="sm">
+              <a href={auth.login.url}>{auth.login.title}</a>
             </Button>}
+           
+          
+           
             <Button asChild size="sm">
               <a href={auth.signup.url}>{auth.signup.title}</a>
             </Button>
@@ -200,6 +224,10 @@ if (role === "tutor") {
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
+                  
+                    <ModeToggle></ModeToggle>
+                 
+                  
                   <Accordion
                     type="single"
                     collapsible
@@ -209,6 +237,7 @@ if (role === "tutor") {
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
+                    
                    {!session ? <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>:
