@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic"
 import { AppSidebar } from "@/components/app-sidebar";
 import LogoutButton from "@/components/modules/shared/LogoutButton";
 import { ModeToggle } from "@/components/modules/shared/ModeToggle";
+import ProfileButton from "@/components/modules/shared/ProfileButton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,6 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { DropdownMenu,  DropdownMenuContent,  DropdownMenuItem,  DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -19,7 +21,10 @@ import {
 } from "@/components/ui/sidebar";
 import { authClient } from "@/lib/auth-client";
 import { userService } from "@/services/user.service";
+import { Link } from "lucide-react";
 import { Children } from "react";
+
+
 
 export default async function DashboardLayout({
     student,
@@ -61,8 +66,9 @@ export default async function DashboardLayout({
             </BreadcrumbList>
           </Breadcrumb>
           <div className="w-full flex gap-10 justify-end">
+            <ProfileButton session={data}></ProfileButton>
             <ModeToggle></ModeToggle>
-            <LogoutButton></LogoutButton>
+            
           </div>
           
         </header>

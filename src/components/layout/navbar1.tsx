@@ -123,7 +123,7 @@ const role = session?.user?.role;
 useEffect(() => {
   const fetchSession = async () => {
     const { data } = await authClient.getSession();
-    console.log("Session data:", data);
+    // console.log("Session data:", data);
     setSession(data);
     setLoading(false);
   };

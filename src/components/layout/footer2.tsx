@@ -53,7 +53,6 @@ const Footer2 = ({
     {
       title: "Resourses",
       links: [
-        { text: "Tutors", url: "/tutors" },
         { text: "About", url: "/about" },
         { text: "Contact", url: "/contact" },
         { text: "Help / Support", url: "/help" },
@@ -75,7 +74,7 @@ const Footer2 = ({
     <section className={cn("py-32", className)}>
       <div className="container mx-auto">
         <footer >
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex flex-col items-start gap-2 lg:justify-start">
                 <div className="flex flex-col">
