@@ -21,36 +21,36 @@ export default async function Home() {
       <section className="">
           <Hero></Hero>
       </section>
-      <section className="w-full flex flex-col justify-center items-center gap-10 mt-0 lg:mt-40">
-            <div className="w-full text-5xl text-center"> 
+      <section className="w-full flex flex-col justify-center items-center gap-10 mt-0 lg:mt-10">
+            <div className="w-full section-title"> 
                <h1 >Featured Tutors</h1>
             </div>
             
            <FeaturedTutor></FeaturedTutor>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
-            <div className="w-full text-5xl text-center"> 
+            <div className="w-full section-title"> 
                <h1 >Popular Sessions</h1>
             </div>
             
            <PopularSessions></PopularSessions>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
-            <div className="w-full text-5xl text-center"> 
+            <div className="w-full section-title"> 
                <h1 >Popular Categories</h1>
             </div>
             
            <Categories></Categories>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
-            <div className="w-full text-5xl text-center"> 
+            <div className="w-full section-title"> 
                <h1 >Student Reviews</h1>
             </div>
             
            <ReviewSection></ReviewSection>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
-            <div className="w-full text-5xl text-center"> 
+            <div className="w-full section-title"> 
                <h1 >F.A.Q</h1>
             </div>
             

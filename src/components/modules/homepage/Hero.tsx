@@ -47,15 +47,15 @@ export function Hero() {
           key={index}
           className="h-1/2 flex items-stretch"
         >
-          <Card className="h-1/2 w-full">
-            <CardContent className="relative h-130 p-0">
+          <Card className="h-1/2 w-full rounded-0 ">
+            <CardContent className="relative h-100 p-0 flex">
               
               {/* Image */}
               <Image
                 src={slide?.image}
                 alt={slide?.title}
                 fill
-                className="object-cover"
+                className="object-center"
                 priority={index === 0}
               />
 

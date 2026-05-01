@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -26,6 +28,12 @@ interface Footer2Props {
     url: string;
   }[];
 }
+const logo = {
+    
+    src: "/logo.svg",
+    alt: "logo",
+    title: "SkillBridge",
+  }
 
 const Footer2 = ({
   
@@ -33,12 +41,23 @@ const Footer2 = ({
   tagline = "Components made easy.",
   menuItems = [
     
+
+
+
+
+
+
+
+
+    
     {
       title: "Resourses",
       links: [
         { text: "Tutors", url: "/tutors" },
-        { text: "Sessions", url: "/sessions" },
-        { text: "Dashboard", url: "/dashboard" },
+        { text: "About", url: "/about" },
+        { text: "Contact", url: "/contact" },
+        { text: "Help / Support", url: "/help" },
+        { text: "Privacy / Terms", url: "/privacy" },
       ],
     },
     {
@@ -59,7 +78,16 @@ const Footer2 = ({
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0">
               <div className="flex flex-col items-start gap-2 lg:justify-start">
-                <h1>Skill bridge</h1>
+                <div className="flex flex-col">
+              <Link href="/">
+                <Image width={50} height={10} src={logo.src} alt={logo.alt}  />
+             
+            </Link>
+            <span className="text-lg text-blue-600 font-semibold tracking-tighter">
+              {logo.title}
+            </span>
+
+            </div>
                  <p>{copyright}</p>
               </div>
               

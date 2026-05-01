@@ -30,6 +30,8 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "../modules/shared/ModeToggle";
+import logo from "../logo.png";
+import Image from "next/image";
 
 interface MenuItem {
   title: string;
@@ -42,7 +44,7 @@ interface MenuItem {
 interface Navbar1Props {
   className?: string;
   logo?: {
-    
+    src: string;
     alt: string;
     title: string;
     className?: string;
@@ -77,7 +79,7 @@ const handleLogout = async () => {
 const Navbar1 = ({
   logo = {
     
-    
+    src: "/logo.svg",
     alt: "logo",
     title: "SkillBridge",
   },
@@ -91,6 +93,16 @@ const Navbar1 = ({
     {
       title: "Sessions",
       url: "/sessions",
+     
+    },
+    {
+      title: "About",
+      url: "/about",
+     
+    },
+    {
+      title: "Contact",
+      url: "/contact",
      
     },
     
@@ -131,18 +143,24 @@ if (role === "tutor") {
   // const session= authClient.getSession()
   // console.log(session);
   return (
-    <section className={cn("py-4", className)}>
-      <div className="container mx-auto px-4">
+    <section className={cn("py-4 top-0 z-50 sticky bg-background/50 backdrop-blur-lg border-b border-border/50", className)}>
+      <div className="container mx-auto px-4 ">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             {/* Logo */}
+            <div className="flex flex-col">
+              <Link href="/">
+                <Image width={50} height={10} src={logo.src} alt={logo.alt} className={logo.className} />
+             
+            </Link>
+            <span className="text-lg text-blue-600 font-semibold tracking-tighter">
+              {logo.title}
+            </span>
+
+            </div>
             
-              
-              <span className="text-lg font-semibold tracking-tighter">
-                {logo.title}
-              </span>
-            
+          
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
