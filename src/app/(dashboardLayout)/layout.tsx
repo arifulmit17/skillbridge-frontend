@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic"
 import { AppSidebar } from "@/components/app-sidebar";
 import LogoutButton from "@/components/modules/shared/LogoutButton";
+import { ModeToggle } from "@/components/modules/shared/ModeToggle";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -59,7 +60,8 @@ export default async function DashboardLayout({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="w-full flex justify-end">
+          <div className="w-full flex gap-10 justify-end">
+            <ModeToggle></ModeToggle>
             <LogoutButton></LogoutButton>
           </div>
           

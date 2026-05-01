@@ -29,6 +29,7 @@ import {
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
+import { ModeToggle } from "../modules/shared/ModeToggle";
 
 interface MenuItem {
   title: string;
@@ -151,6 +152,7 @@ if (role === "tutor") {
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle></ModeToggle>
            {!session ? <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>:

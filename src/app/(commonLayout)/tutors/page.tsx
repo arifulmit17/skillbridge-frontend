@@ -39,7 +39,7 @@ const [selectedCategory, setSelectedCategory] = useState<string>("all")
   // console.log(tutors);
   return (
     
-         <div className='flex flex-col gap-10'>
+         <div className='flex flex-col gap-10 '>
             
           <div>
              <SearchFormCustom onResults={(results: Tutor[]) => {

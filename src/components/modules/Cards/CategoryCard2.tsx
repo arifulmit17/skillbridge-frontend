@@ -17,28 +17,26 @@ type CategoryCardProps = {
 
 export function CategoryCard2({ category }: CategoryCardProps) {
   return (
-    <Card className="w-full group rounded-2xl border bg-white p-4 shadow-sm transition hover:shadow-md">
-      <CardContent className="p-0 space-y-3">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold capitalize group-hover:text-primary transition">
-            {category?.name}
-          </h3>
+    <Card className="w-full group rounded-2xl border border-border bg-card text-card-foreground p-4 shadow-sm transition hover:shadow-md">
+  <CardContent className="p-0 space-y-3">
+    
+    {/* Header */}
+    <div className="flex items-center justify-between">
+      <h3 className="text-lg font-semibold capitalize transition group-hover:text-primary">
+        {category?.name}
+      </h3>
 
-          <Badge variant="secondary">
-            {category?._count?.tutors} Tutors
-          </Badge>
-        </div>
+      <Badge variant="secondary" className="bg-secondary text-secondary-foreground">
+        {category?._count?.tutors} Tutors
+      </Badge>
+    </div>
 
-        {/* Meta */}
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
-          <span>📚 {category?._count?.bookings} Bookings</span>
-        </div>
+    {/* Meta */}
+    <div className="flex items-center gap-3 text-sm text-muted-foreground">
+      <span>📚 {category?._count?.bookings} Bookings</span>
+    </div>
 
-        
-       
-        
-      </CardContent>
-    </Card>
+  </CardContent>
+</Card>
   )
 }
