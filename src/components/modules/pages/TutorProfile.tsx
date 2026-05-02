@@ -144,7 +144,7 @@ export default async function TutorProfilePage({
         <InfoRow label="Account Status" value={tutor?.status} />
       </Card>
 
-      {user.user.name === tutor?.user.name && (
+      {user?.user.name === tutor?.user.name && (
         <div className="rounded-2xl border bg-card text-card-foreground p-6">
           <UpdateUserProfile userId={userId} />
         </div>

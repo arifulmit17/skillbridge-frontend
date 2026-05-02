@@ -57,7 +57,7 @@ export default async function Home() {
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-10 mt-5 lg:mt-10">
             <div className="w-full section-title"> 
-               <h1 >How it works</h1>
+               <h1 > How SkillBridge Works ⚡</h1>
             </div>
             
            <HowItWorksSection></HowItWorksSection>
