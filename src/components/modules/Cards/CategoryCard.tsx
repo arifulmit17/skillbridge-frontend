@@ -17,7 +17,7 @@ type CategoryCardProps = {
 
 export function CategoryCard({ category }: CategoryCardProps) {
   return (
-    <Card className="w-full group rounded-2xl border bg-white p-4 shadow-sm transition hover:shadow-md">
+    <Card className="w-full group rounded-2xl border bg-card p-4 shadow-sm transition hover:shadow-md">
       <CardContent className="p-0 space-y-3">
         {/* Header */}
         <div className="flex items-center justify-between">

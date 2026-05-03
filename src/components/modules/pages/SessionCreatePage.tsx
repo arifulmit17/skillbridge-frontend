@@ -134,7 +134,7 @@ export function SessionCreatePage({
                 required
                 value={formData.categoryId}
                 onChange={handleChange}
-                className="w-full rounded-md border px-3 py-2 text-sm"
+                className="w-full bg-card rounded-md border px-3 py-2 text-sm"
               >
                 <option value="">Select category</option>
                 {categories.map((cat) => (
@@ -158,7 +158,7 @@ export function SessionCreatePage({
     disabled={availableSlots.length === 0}
     value={formData.availabilitySlotId}
     onChange={handleChange}
-    className="w-full rounded-md border px-3 py-2 text-sm disabled:opacity-50"
+    className="w-full bg-card rounded-md border px-3 py-2 text-sm disabled:opacity-50"
   >
     <option value="">
       {availableSlots.length === 0
@@ -221,7 +221,7 @@ export function SessionCreatePage({
                 name="status"
                 value={formData.status}
                 onChange={handleChange}
-                className="w-full rounded-md border px-3 py-2 text-sm"
+                className="w-full bg-card rounded-md border px-3 py-2 text-sm"
               >
                 <option value="PENDING">Pending</option>
                 <option value="COMPLETED">Completed</option>

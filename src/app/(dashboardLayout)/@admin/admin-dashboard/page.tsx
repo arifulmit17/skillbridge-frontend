@@ -25,29 +25,29 @@ const reviewLength = Array.isArray(reviews) ? reviews?.length : 0
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Users</p>
     <h2 className="mt-2 text-3xl font-bold">{users?.length}</h2>
   </div>
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Tutor</p>
     <h2 className="mt-2 text-3xl font-bold">{tutor?.length}</h2>
   </div>
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Student</p>
     <h2 className="mt-2 text-3xl font-bold">{student?.length}</h2>
   </div>
 
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Sessions</p>
     <h2 className="mt-2 text-3xl font-bold">{sessionlength}</h2>
   </div>
 
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Categories</p>
     <h2 className="mt-2 text-3xl font-bold">{Catlength}</h2>
   </div>
-  <div className="rounded-xl border bg-white p-6 shadow-sm">
+  <div className="rounded-xl border bg-card p-6 shadow-sm">
     <p className="text-sm text-muted-foreground">Total Reviews</p>
     <h2 className="mt-2 text-3xl font-bold">{reviewLength}</h2>
   </div>
