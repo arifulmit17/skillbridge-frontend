@@ -1,3 +1,4 @@
+import ReviewCard from '@/components/modules/Cards/ReviewCard';
 import ReviewPage from '@/components/modules/pages/Reviewpage';
 import { reviewsService } from '@/services/reviews.service'
 import { tutorService } from '@/services/tutor.service';
@@ -34,10 +35,13 @@ export default async function TutorReviewsPage() {
     // console.log(filteredReviews);
     
   return (
-    <div>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
   {Array.isArray(filteredReviews) && filteredReviews?.length > 0 ? (
     filteredReviews?.map((review: Review) => (
-      <ReviewPage key={review?.id} review={review} />
+  
+         <ReviewCard key={review?.id} review={review} />
+
+      
     ))
   ) : (
     <div className="text-center py-10 text-muted-foreground">

@@ -110,7 +110,7 @@ export async function  SessionCard2({ session }: { session: Session }) {
 
         
          {userName ? <h1>Session is Booked by {userName}</h1>: <h1>Session is not booked yet</h1>}
-         {!booked && role==="student" && <BookingButton
+         {!booked && (role === "student" || role === "Student") && <BookingButton
                        studentId={data?.user?.id}
                        sessionId={session?.id}
                        slotId={session?.availabilitySlotId}

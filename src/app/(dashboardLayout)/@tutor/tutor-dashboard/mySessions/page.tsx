@@ -58,7 +58,7 @@ export default async function MySessions() {
     const sessions=await sessionsData?.data?.json();
     const mySessions=sessions?.filter((session:Session)=>session?.tutorId===authorId);
   return (
-   <div>
+   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
   {Array.isArray(mySessions) && mySessions?.length > 0 ? (
     mySessions?.map((session: Session) => (
       <SessionCard key={session?.id} session={session} />

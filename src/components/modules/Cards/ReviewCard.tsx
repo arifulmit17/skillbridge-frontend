@@ -17,14 +17,14 @@ export default async function ReviewCard({ review }: { review: Review }) {
    const {data:student}=await userService2.getAllUser()
     const studentInfo=student.filter(user=>user.id==review.userId)
   return (
-    <div className="max-w-md rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+    <div className="max-w-md rounded-2xl border border-gray-50 bg-card shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
 
   {/* Header */}
   <div className="px-5 py-4 border-b space-y-1">
-    <h2 className="text-base font-semibold text-gray-900">
+    <h2 className="text-base font-semibold text-card-foreground">
       Review for {TutorName}
     </h2>
-    <p className="text-sm text-gray-500">
+    <p className="text-sm text-card-foreground">
       By {studentInfo[0].name}
     </p>
   </div>
@@ -38,20 +38,20 @@ export default async function ReviewCard({ review }: { review: Review }) {
         {"★".repeat(Number(review?.rating))}
         {"☆".repeat(5 - Number(review?.rating))}
       </div>
-      <span className="text-sm text-gray-500">
+      <span className="text-sm text-card-foreground">
         {review?.rating}/5
       </span>
     </div>
 
     {/* Comment */}
-    <p className="text-gray-700 leading-relaxed text-sm">
+    <p className="text-card-foreground leading-relaxed text-sm">
       {review?.comment}
     </p>
 
   </div>
 
   {/* Footer */}
-  <div className="px-5 py-3 border-t text-xs text-gray-400 flex justify-between">
+  <div className="px-5 py-3 border-t text-xs text-card-foreground flex justify-between">
     <span>
       {new Date(review?.createdAt).toLocaleDateString()}
     </span>

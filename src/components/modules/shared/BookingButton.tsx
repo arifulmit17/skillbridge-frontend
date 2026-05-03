@@ -14,7 +14,7 @@ export default function BookingButton({studentId,
 }: BookingButtonProps) {
 
   const handleBooking= async(studentId:string,sessionId :string,slotId: string)=>{
-      // console.log("student id: ",studentId,"session id:",sessionId);
+      console.log("student id: ",studentId,"session id:",sessionId);
        
        const {res}= await bookingService.updateSession(sessionId,{studentId})
        const {res2}= await availabilityService.updateSlot(slotId,{isBooked:true})

@@ -23,7 +23,7 @@ type Tutor = {
 
 export default function TutorCard({ tutor }: { tutor: Tutor }) {
   return (
-<div className="group relative rounded-2xl border bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg">
+<div className="group relative rounded-2xl border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg">
   {/* Featured glow */}
   {tutor?.isFeatured && (
     <div className="absolute -top-3 -right-3 rounded-full bg-yellow-400 px-3 py-1 text-xs font-semibold text-white shadow">
@@ -82,7 +82,7 @@ export default function TutorCard({ tutor }: { tutor: Tutor }) {
 
     <Link
       href={`/tutors/${tutor?.id}`}
-      className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/40"
+      className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-card-foreground transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/40"
     >
       View Profile →
     </Link>

@@ -58,7 +58,7 @@
   --foreground: oklch(0.2 0.02 250);
 
   /* Card */
-  --card: oklch(1 0.01 250);
+  --card: oklch(93.256% 0.02029 238.841);
   --card-foreground: oklch(0.2 0.02 250);
 
   /* Primary (Brand) */
@@ -109,7 +109,7 @@
   --background: oklch(0.18 0.03 250);       /* deep navy */
   --foreground: oklch(0.95 0.01 250);
 
-  --card: oklch(0.22 0.03 250);
+  --card: oklch(19.721% 0.09513 273.413);
   --card-foreground: oklch(0.95 0.01 250);
 
   --primary: oklch(67.545% 0.17349 246.383);          /* #00B4D8 */

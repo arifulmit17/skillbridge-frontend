@@ -33,7 +33,10 @@ export function AppSidebar({ user,...props }: {user: { role: string } & React.Co
     case "tutor":
       routes = tutorRoutes;
       break;
-    case "student":
+    case "student" :
+      routes = studentRoutes;
+      break;
+    case "Student" :
       routes = studentRoutes;
       break;
     default:

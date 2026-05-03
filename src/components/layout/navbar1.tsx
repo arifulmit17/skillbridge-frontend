@@ -119,6 +119,7 @@ const Navbar1 = ({
 const [loading, setLoading] = useState(true);
 
 const role = session?.user?.role;
+console.log(role);
 
 useEffect(() => {
   const fetchSession = async () => {
@@ -135,7 +136,7 @@ let dashboardItem: MenuItem | null = null;
 
 if (role === "tutor") {
   dashboardItem = { title: "Dashboard", url: "/tutor-dashboard" };
-} else if (role === "student") {
+} else if (role === "student" || role === "Student") {
   dashboardItem = { title: "Dashboard", url: "/dashboard" };
 } else if (role === "admin") {
   dashboardItem = { title: "Dashboard", url: "/admin-dashboard" };

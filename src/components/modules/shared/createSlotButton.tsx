@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
+import { availabilityService } from "@/services/availability.service"
 
 export default function CreateSlotButton({ tutorId }: { tutorId: string }) {
   const [dayOfWeek, setDayOfWeek] = useState<string>("")
@@ -18,24 +19,14 @@ export default function CreateSlotButton({ tutorId }: { tutorId: string }) {
     try {
       setLoading(true)
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/slots/`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({
-            tutorId,
-            dayOfWeek,
-          }),
-        }
-      )
+      // 
+      const res = await availabilityService.createSlot(tutorId, dayOfWeek)
+      
+      const data = res
 
-      const data = await res.json()
-
-      if (!res.ok) {
-        toast.error(data.message || "Failed to create slot",{ position: "top-center" })
-      }
+      // if (!res.ok) {
+      //   toast.error(data.message || "Failed to create slot",{ position: "top-center" })
+      // }
 
       toast.success("Availability added successfully",{ position: "top-center" })
       setDayOfWeek("")
@@ -54,7 +45,7 @@ export default function CreateSlotButton({ tutorId }: { tutorId: string }) {
       <select
         value={dayOfWeek}
         onChange={handleSelect}
-        className="border rounded-md px-3 py-2"
+        className="border bg-card rounded-md px-3 py-2"
       >
         <option value="" disabled>
           Choose a day

@@ -92,10 +92,10 @@ export async function  SessionCard({ session }: { session: Session }) {
   }[session?.status]
 
   return (
-    <Card className="max-w-md rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+    <Card className="max-w-md rounded-2xl bg-card border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300">
 
   <CardHeader className="flex flex-row items-center justify-between px-5 py-4 border-b">
-    <CardTitle className="text-lg font-semibold text-gray-900">
+    <CardTitle className="text-lg font-semibold text-card-foreground">
       Tutoring Session by {tutorName}
     </CardTitle>
 
@@ -106,10 +106,10 @@ export async function  SessionCard({ session }: { session: Session }) {
     </span>
   </CardHeader>
 
-  <CardContent className="px-5 py-5 space-y-4 text-sm text-gray-700">
+  <CardContent className="px-5 py-5 space-y-4 text-sm text-card-foreground">
 
     <div className="space-y-1">
-      <p className="text-xs uppercase tracking-wide text-gray-500">
+      <p className="text-xs uppercase tracking-wide text-card-foreground/70">
         Session date
       </p>
       <p className="font-medium">Today</p>
@@ -117,14 +117,14 @@ export async function  SessionCard({ session }: { session: Session }) {
 
     <div className="grid grid-cols-2 gap-4">
       <div className="space-y-1">
-        <p className="text-xs uppercase tracking-wide text-gray-500">
+        <p className="text-xs uppercase tracking-wide text-card-foreground/70">
           Start
         </p>
         <p className="font-medium">{start?.toLocaleString()}</p>
       </div>
 
       <div className="space-y-1">
-        <p className="text-xs uppercase tracking-wide text-gray-500">
+        <p className="text-xs uppercase tracking-wide text-card-foreground/70">
           End
         </p>
         <p className="font-medium">{end?.toLocaleString()}</p>

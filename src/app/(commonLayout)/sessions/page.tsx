@@ -1,6 +1,5 @@
 import { SessionCard } from '@/components/modules/Cards/SessionCard'
 import { bookingService } from '@/services/booking.service'
-import { tutorService } from '@/services/tutor.service'
 import React from 'react'
 
 type User = {
@@ -51,6 +50,7 @@ export default async function SessionPage() {
     
   return (
    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
+    
   {Array.isArray(sessionData) && sessionData?.length > 0 ? (
     sessionData?.map((session: Session) => (
       <SessionCard key={session?.id} session={session} />

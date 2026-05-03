@@ -123,26 +123,44 @@ export default async function TutorProfilePage({
     
     {/* Left column */}
     <div className="md:col-span-2 space-y-8">
-      <Card title="About the Tutor">
-        <p className="text-sm leading-relaxed text-muted-foreground">
+      <div className="rounded-2xl border bg-card text-card-foreground p-6" >
+        <h1 className="text-xl font-bold">About the Tutor</h1>
+        <p className="text-sm bg-card leading-relaxed text-card-foreground">
           {tutor?.user?.name} is a professional {tutor?.subject} tutor,
           offering structured and student-focused lessons tailored to
           individual needs.
         </p>
-      </Card>
+      </div>
 
-      <Card title="Teaching Details">
-        <InfoRow label="Subject" value={tutor?.subject} />
-        <InfoRow label="Hourly Rate" value={`$${tutor?.price}`} />
-      </Card>
+      <div className="rounded-2xl border bg-card text-card-foreground p-6">
+        <h2 className="text-lg font-semibold">Teaching Details</h2>
+        <h2 className="text-sm font-semibold">
+  Subject: {tutor?.subject}
+</h2>
+
+<h2 className="text-sm font-semibold">
+  Hourly Rate: ${tutor?.price}
+</h2>
+      </div>
     </div>
 
     {/* Right column */}
-    <div className="space-y-6">
-      <Card title="Contact Information">
-        <InfoRow label="Email" value={tutor?.user.email} />
-        <InfoRow label="Account Status" value={tutor?.status} />
-      </Card>
+    <div className="space-y-6 ">
+      <div className="p-4 rounded-xl border bg-card shadow-sm">
+  <h2 className="text-xl font-semibold mb-3">
+    Contact Information
+  </h2>
+
+  <h2 className="text-lg">
+    <span className="font-medium text-muted-foreground">Email:</span>{" "}
+    {tutor?.user.email}
+  </h2>
+
+  <h2 className="text-lg">
+    <span className="font-medium text-muted-foreground">Account Status:</span>{" "}
+    {tutor?.status}
+  </h2>
+</div>
 
       {user?.user.name === tutor?.user.name && (
         <div className="rounded-2xl border bg-card text-card-foreground p-6">

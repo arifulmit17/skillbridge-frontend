@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input"
 import { authClient } from "@/lib/auth-client"
 import { toast } from "sonner"
 import { z } from "zod"
+import { createAuthClient } from "better-auth/client";
 
 export  function SignupForm(props: React.ComponentProps<typeof Card>) {
   const [formData, setFormData] = useState({
@@ -85,6 +86,16 @@ if (!result.success) {
       toast.error("Signup not successful, Please try again.")
     }
   }
+
+  
+
+  const signIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      // callbackURL:"http://localhost:4000" // Change this to your desired callback URL
+      callbackURL:"https://skillbridge-frontend-bay.vercel.app/" // Change this to your desired callback URL
+    });
+  };
 
   return (
     <Card {...props}>
@@ -178,8 +189,17 @@ if (!result.success) {
               <FieldDescription className="text-center">
                 Already have an account? <a href="/login">Sign in</a>
               </FieldDescription>
+              <Button
+      type="submit"
+        onClick={signIn}
+        className="w-full"
+      >
+        Sign in with Google
+      </Button>
             </Field>
           </FieldGroup>
+           {/* ✅ Google Sign In Button */}
+      
         </form>
       </CardContent>
     </Card>

@@ -8,7 +8,7 @@ export default async function AdminDashboard() {
 
   const {data:users}=await userService2?.getAllUser()
   const tutor=users?.filter(user=>user?.role==="tutor")
-  const student=users?.filter(user=>user?.role==="student")
+  const student=users?.filter(user=>user?.role==="student"||user?.role==="Student")
   const {data:sessions}=await bookingService?.getAllSessions()
   const Sessions=await sessions.json()
   const sessionlength=Array.isArray(Sessions) ? Sessions?.length : 0
